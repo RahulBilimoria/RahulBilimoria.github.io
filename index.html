@@ -13,53 +13,18 @@
     <script src="controller.js"></script>
   </head>
   <body>
-    <nav class="navbar navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
       <a class="navbar-brand" href="#">Rahul Bilimoria</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="collapsibleNavbar">
-        <ul class="navbar-nav">
-          <li class="nav-item"><a class="nav-link" href="./index.html">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="./about.html">Resume</a></li>
-          <li class="nav-item active"><a class="nav-link" href="./projects.html">Projects</a></li>
-          <li class="nav-item"><a class="nav-link" href="./contact.html">Contact</a></li>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item active"><a class="nav-link" href="./index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="./projects.html">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="./contact.html">LinkedIn</a></li>
         </ul>
       </div>
     </nav>
-    <div ng-app="projects" ng-controller="projectsController">
-      <div class="container">
-        <h1 class="my-4">Projects
-          <small>All Projects</small>
-        </h1>
-        
-      <!-- Project One -->
-        <main>
-          <ul class="nav nav-tabs">
-            <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#all" ng-click="showList('all')">All</a></li>
-            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#games" ng-click="showList('game')">Games</a></li>
-            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#virtualreality" ng-click="showList('vr')">Virtual Reality</a></li>
-            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#webdevelopment" ng-click="showList('webdev')">Web Development</a></li>
-          </ul>
-          <p> </p>
-          <span id="List" ng-repeat="x in projects" ng-if="show === 'all' || x.tags.includes(show)">
-            <div class="row">
-              <div class="col-md-7">
-                <a href="#">
-                  <img class="img-fluid rounded mb-3 mb-md-0" ng-src="{{x.img}}" alt="">
-                </a>
-              </div>
-              <div class="col-md-5">
-                <h3>{{x.name}}</h3>
-                <p>{{x.description}}</p>
-                <p>Tools used: {{x.lang}}</p>
-                <a class="btn btn-primary" ng-href="{{x.link}}">View Project</a>
-              </div>
-            </div>
-            <hr>
-          </span>
-        </main>
-      </div>
-    </div>
   </body>
 </html>

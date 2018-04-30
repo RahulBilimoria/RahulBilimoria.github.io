@@ -2,14 +2,49 @@
     "name": "Virtual Reality Escape Room",
     "description": "A virtual reality escape room game developed in Unity using C# and the HTC Vive",
     "tags":["game", "vr"],
-    "img": "http://placehold.it/700x300",
+    "img": "./img/ER-livingroom-1.png",
     "link": "#",
     "lang": "C# (Unity)"
 }, {
     "name": "Pokemon RPG",
     "description": "A classic pokemon RPG developed in Java",
     "tags":["game"],
-    "img": "http://placehold.it/700x300",
+    "img": "./img/pokemon-rpg-1.png",
     "link": "#",
     "lang": "Java (Netbeans)"
+}, {
+    "name": "Submarine Battle",
+    "description": "A 3D game where you fight enemies as a submarine",
+    "tags":["game"],
+    "img": "./img/submarine-war-1.png",
+    "link": "#",
+    "lang": "C++ (OpenGL Library)"
+}, {
+    "name": "TavernVR",
+    "description": "A course lab assignment built to test the capabilities of navigation and object manipulation in Virtual Reality",
+    "tags":["vr"],
+    "img": "./img/tavern-1.png",
+    "link": "#",
+    "lang": "C# (Unity)"
+}, {
+    "name": "Virtual Reality Lab 4",
+    "description": "A course lab assignment built experiment with different types of input possible with Virtual Reality",
+    "tags":["vr"],
+    "img": "./img/vr-lab4-1.png",
+    "link": "#",
+    "lang": "C# (Unity)"
+}, {
+    "name": "Task Organizer",
+    "description": "A web application designed to help with the organization of tasks",
+    "tags":["webdev"],
+    "img": "./img/task-list-1.png",
+    "link": "#",
+    "lang": "AngularJS"
+}, {
+    "name": "Weather Forecast",
+    "description": "A web application built to forecast the weather using data retrieved from an API",
+    "tags":["webdev"],
+    "img": "./img/weather-forecast-1.png",
+    "link": "#",
+    "lang": "Javascript"
 }]
