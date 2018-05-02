@@ -3,6 +3,7 @@ angular.module("projects", []).controller("projectsController",
 
 function($scope, $http){
   $scope.show = 'all';
+  $scope.showProject = false;
 
   $http.get('projects.json').then(function(data) {
       $scope.projects = data.data;
@@ -10,5 +11,9 @@ function($scope, $http){
 
   $scope.showList = function(value){
       $scope.show = value;
+  }
+  
+  $scope.setProject = function(value){
+    $scope.showProject = value;
   }
 }])

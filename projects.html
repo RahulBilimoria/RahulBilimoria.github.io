@@ -11,6 +11,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
     <script type="text/javascript" src="projects.json"></script>
     <script src="controller.js"></script>
+    <link href="/font/css/open-iconic-bootstrap.css" rel="stylesheet">
   </head>
   <body>
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
@@ -27,11 +28,11 @@
       </div>
     </nav>
     <div ng-app="projects" ng-controller="projectsController">
-      <div class="container">
+      <!--projects list-->
+      <div class="container" ng-if="!showProject">
         <h1 class="my-4">Projects
-          <small>All Projects</small>
+          <small>> All Projects</small>
         </h1>
-        
       <!-- Project loop -->
         <main>
           <ul class="nav nav-tabs">
@@ -52,12 +53,24 @@
                 <h3>{{x.name}}</h3>
                 <p>{{x.description}}</p>
                 <p>Tools used: {{x.lang}}</p>
-                <a class="btn btn-primary" ng-href="{{x.link}}">View Project</a>
+                <a class="btn btn-primary" ng-href="{{x.link}}" ng-click="setProject(true)">View Project</a>
               </div>
             </div>
             <hr>
           </span>
         </main>
+      </div>
+      <!--project information-->
+      <div class="container" style="margin-top:25px" ng-if="showProject">
+        <a class="text-dark row" href="#" style="text-decoration: none; margin-left:0px" ng-click="setProject(false)">
+          <span class="oi oi-chevron-left" style="margin-top:9px"></span>
+          <h3>Back</h3>
+        </a>
+        <h3>ENTER TITLE OF PROJECT</h3>
+        <hr style="margin-top:0px">
+        <div class="row">
+        
+        </div>
       </div>
     </div>
   </body>
