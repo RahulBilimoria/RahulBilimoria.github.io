@@ -1,50 +1,134 @@
 [{
+    "id": 0,
     "name": "Virtual Reality Escape Room",
     "description": "A virtual reality escape room game developed in Unity using C# and the HTC Vive",
     "tags":["game", "vr"],
     "img": "./img/ER-livingroom-1.png",
-    "link": "#",
-    "lang": "C# (Unity)"
-}, {
-    "name": "Pokemon RPG",
+    "link": "#vrescaperoom",
+    "lang": "C# (Unity)",
+    "project": {
+      "coverimg": "./img/ER-livingroom-2.png",
+      "gif": " ",
+      "video": " ",
+      "description": "You wake up in the middle of an unfamiliar living room. You dont remember how you got there and theres no visible way to get out. All you have to go on is a door with 6 pool ball coloured holes above it. Can you escape?",
+      "features": ["Interactable Objects", "Cooking", "Interactive Physics", "Plenty of Puzzles"],
+      "development": "This game was developed in Unity for the HTC Vive. It uses the SteamVR platform and scripts written in C#",
+      "github": ["https://github.com/RahulBilimoria/EscapeRoom"],
+      "textcolor": "#FFFFFF",
+      "backgroundcolor": "#009fd4"
+    }
+},  {
+    "id": 1,
+    "name": "Pokemon Cyrus",
     "description": "A classic pokemon RPG developed in Java",
     "tags":["game"],
     "img": "./img/pokemon-rpg-1.png",
-    "link": "#",
-    "lang": "Java (Netbeans)"
-}, {
+    "link": "#pokemonrpg",
+    "lang": "Java (Netbeans)",
+    "project": {
+      "coverimg": "./img/pokemon-rpg-2.png",
+      "gif": " ",
+      "video": " ",
+      "description": "After moving to Sevilla Village with your parents, Professor Cyrus asks you to go on an adventure to help him complete his pokedex. Gym Leaders, Police, Team Rocket, an unknown faction and strong wild pokemon stand in your way to becoming the pokemon champion.",
+      "features": ["Customizable Pokemon", "PKMN Storage", "PKMN Battles", "NPC Battles & Traders", "Bag System", "AI Battles"],
+      "development": "This game was developed in Java with the Netbeans IDE. It is currently still under development.",
+      "github": ["https://github.com/RahulBilimoria/PokeGame"],
+      "textcolor": "#FFFFFF",
+      "backgroundcolor": "#10866b"
+    }
+},  {
+    "id": 2,
     "name": "Submarine Battle",
     "description": "A 3D game where you fight enemies as a submarine",
     "tags":["game"],
     "img": "./img/submarine-war-1.png",
-    "link": "#",
-    "lang": "C++ (OpenGL Library)"
-}, {
+    "link": "#subbattle",
+    "lang": "C++ (OpenGL Library)",
+    "project": {
+      "coverimg": "./img/submarine-war-2.png",
+      "gif": " ",
+      "video": " ",
+      "description": "A c++ game built to test the libraries and features of the OpenGL Library. The user controls a submarine and can fight with AI controlled enemies. The submarine was build using OpenGL primitives with basic input handling to move the player, the terrain was made using the gaussian formula to create hills and all the submarines are texture mapped. The game uses hitbox detection to check whether the torpedo collides with an enemy.",
+      "features": ["AI Controlled Enemies", "Combat", "Animated Movement", "Texture Mapping"],
+      "development": "This game was developed in C++ using the OpenGL Library. It was developed for a computer graphics course as the major assignment and was built in three parts over the course of four months.",
+      "github": ["https://github.com/RahulBilimoria/CPS511-Assignment-1","https://github.com/RahulBilimoria/CPS511-Assignment-2","https://github.com/RahulBilimoria/CPS511-Assignment-3"],
+      "textcolor": "",
+      "backgroundcolor": ""
+    }
+},  {
+    "id": 3,
     "name": "TavernVR",
     "description": "A course lab assignment built to test the capabilities of navigation and object manipulation in Virtual Reality",
     "tags":["vr"],
     "img": "./img/tavern-1.png",
-    "link": "#",
-    "lang": "C# (Unity)"
-}, {
-    "name": "Virtual Reality Lab 4",
+    "link": "#tavernvr",
+    "lang": "C# (Unity)",
+    "project": {
+      "coverimg": "./img/ER-livingroom-2.png",
+      "gif": " ",
+      "video": " ",
+      "description": "A lab which experiments with the interaction of various items and implements teleportation as a means of navigation in virtual reality. Items can be picked up, manipulated with some having secondary uses.",
+      "features": ["Interactable Objects", "Activation", "Navigation", "Safe VR Implementation"],
+      "development": "This lab was developed in Unity for the HTC Vive. It uses the SteamVR platform and scripts written in C#",
+      "github": ["https://github.com/RahulBilimoria/TavernVR"],
+      "textcolor": "",
+      "backgroundcolor": ""
+    }
+},  {
+    "id": 4,
+    "name": "Virtual Reality Interaction Demo",
     "description": "A course lab assignment built experiment with different types of input possible with Virtual Reality",
     "tags":["vr"],
     "img": "./img/vr-lab4-1.png",
-    "link": "#",
-    "lang": "C# (Unity)"
-}, {
+    "link": "#vrinteraction",
+    "lang": "C# (Unity)",
+    "project": {
+      "coverimg": "./img/ER-livingroom-2.png",
+      "gif": " ",
+      "video": " ",
+      "description": "A lab that implements the manipulation of objects in virtual reality through ingame inputs such as levers, buttons, and wheels",
+      "features": ["Interactable Objects", "Object Manipulation", "Input Interaction", "Safe VR Practices"],
+      "development": "This lab was developed in Unity for the HTC Vive. It uses the SteamVR platform and scripts written in C#",
+      "github": ["https://github.com/RahulBilimoria/VRLab04"],
+      "textcolor": "",
+      "backgroundcolor": ""
+    }
+},  {
+    "id": 5,
     "name": "Task Organizer",
     "description": "A web application designed to help with the organization of tasks",
     "tags":["webdev"],
     "img": "./img/task-list-1.png",
-    "link": "#",
-    "lang": "AngularJS"
-}, {
+    "link": "#task",
+    "lang": "AngularJS",
+    "project": {
+      "coverimg": "./img/ER-livingroom-2.png",
+      "gif": " ",
+      "video": " ",
+      "description": "A responsive, mobile first, single page web application for adding, removing, and the organization of tasks",
+      "features": ["HTML", "CSS", "Bootstrap", "AngularJS"],
+      "development": "This webapp was developed for a Web Development course over the span of 2 weeks.",
+      "github": ["https://github.com/RahulBilimoria/TasksList"],
+      "textcolor": "",
+      "backgroundcolor": ""
+    }
+},  {
+    "id": 6,
     "name": "Weather Forecast",
     "description": "A web application built to forecast the weather using data retrieved from an API",
     "tags":["webdev"],
     "img": "./img/weather-forecast-1.png",
-    "link": "#",
-    "lang": "Javascript"
+    "link": "#weather",
+    "lang": "Javascript",
+    "project": {
+      "coverimg": "./img/ER-livingroom-2.png",
+      "gif": " ",
+      "video": " ",
+      "description": "A responsive, mobile first, web application to find the five day forecast of any location in celcius or fahrenheit",
+      "features": ["HTML", "CSS", "Javascript", "Open Weather Map API"],
+      "development": "This webapp was developed for a Web Development course over the span of 2 weeks.",
+      "github": ["https://github.com/RahulBilimoria/WeatherForecast"],
+      "textcolor": "",
+      "backgroundcolor": ""
+    }
 }]
