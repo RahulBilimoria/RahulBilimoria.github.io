@@ -18,4 +18,12 @@ function($scope, $http){
     $scope.projectInfo = $scope.projects[id];
     $scope.showProject = value;
   }
+  
+  $scope.getIcon = function(value){
+    if (value === "C#") value = "CSharp";
+    if (value === "HTC Vive") value = "htcvive";
+    if (value === "Open Weather Map API") value = "openweathermap";
+    if (value === "Visual Studio") value = "visualstudio";
+    return "./icon/" + value + ".png";
+  }
 }])

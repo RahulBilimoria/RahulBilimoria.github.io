@@ -1,11 +1,11 @@
 .text-bubble {
   color: #FFFFFF;
-  background: #009fd4;
-  padding: 20px;
+  background: #659DBD;
+
 }
 
 .text-bubble-inverted {
-  color: #009fd4;
+  color: #5A5A5A;
   background: #FFFFFF;
-  padding: 20px;
+
 }
