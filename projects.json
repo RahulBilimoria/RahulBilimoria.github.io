@@ -15,6 +15,7 @@
       "development": "This game was developed in Unity for the HTC Vive. It uses the SteamVR platform and scripts written in C#",
       "tools": ["Unity", "SteamVR", "HTC Vive", "C#"],
       "github": ["https://github.com/RahulBilimoria/EscapeRoom"],
+      "website": null,
       "textcolor": "#FFFFFF",
       "backgroundcolor": "#009fd4"
     }
@@ -35,6 +36,7 @@
       "development": "This game was developed in Java with the Netbeans IDE. It is currently still under development.",
       "tools": ["Java", "Netbeans", "Bulbapedia"],
       "github": ["https://github.com/RahulBilimoria/PokeGame"],
+      "website": null,
       "textcolor": "#FFFFFF",
       "backgroundcolor": "#10866b"
     }
@@ -55,6 +57,7 @@
       "development": "This game was developed in C++ using the OpenGL Library. It was developed for a computer graphics course as the major assignment and was built in three parts over the course of four months.",
       "tools": ["C++", "OpenGL", "Visual Studio"],
       "github": ["https://github.com/RahulBilimoria/CPS511-Assignment-1","https://github.com/RahulBilimoria/CPS511-Assignment-2","https://github.com/RahulBilimoria/CPS511-Assignment-3"],
+      "website": null,
       "textcolor": "",
       "backgroundcolor": ""
     }
@@ -75,6 +78,7 @@
       "development": "This lab was developed in Unity for the HTC Vive. It uses the SteamVR platform and scripts written in C#",
       "tools": ["Unity", "SteamVR", "HTC Vive", "C#"],
       "github": ["https://github.com/RahulBilimoria/TavernVR"],
+      "website": null,
       "textcolor": "",
       "backgroundcolor": ""
     }
@@ -95,6 +99,7 @@
       "development": "This lab was developed in Unity for the HTC Vive. It uses the SteamVR platform and scripts written in C#",
       "tools": ["Unity", "SteamVR", "HTC Vive", "C#"],
       "github": ["https://github.com/RahulBilimoria/VRLab04"],
+      "website": null,
       "textcolor": "",
       "backgroundcolor": ""
     }
@@ -114,7 +119,7 @@
       "development": "This webapp was developed for a Web Development course over the span of 2 weeks.",
       "tools": ["HTML", "CSS", "Bootstrap", "AngularJS"],
       "github": ["https://github.com/RahulBilimoria/TasksList"],
-      "website": "",
+      "website": "http://rahulbilimoria.me/DemoWebsites/task.html",
       "textcolor": "",
       "backgroundcolor": ""
     }
@@ -135,7 +140,7 @@
       "development": "This webapp was developed for a Web Development course over the span of 2 weeks.",
       "tools": ["HTML", "CSS", "Javascript", "Open Weather Map API", "Bootstrap"],
       "github": ["https://github.com/RahulBilimoria/WeatherForecast"],
-      "website": "",
+      "website": "./DemoWebsites/weather.html",
       "textcolor": "",
       "backgroundcolor": ""
     }
