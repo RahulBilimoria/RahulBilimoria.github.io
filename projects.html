@@ -117,7 +117,7 @@
             </a>
 
           </div>
-          <div class="col-md-4 text-center text-bubble justify-content-center align-items-center">
+          <div class="col-md-4 text-center text-bubble justify-content-center align-items-center" ng-if="projectInfo.project.website == null">
             <div class="row justify-content-center">
             <h3>Features</h3>
               </div>
@@ -128,9 +128,13 @@
               </span>
             </ul>
           </div>
-        </div>
-        <div class="row">
-          <a ng-href="{{projectInfo.project.website}}" ng-if="projectInfo.project.website != null">Demo Website</a>
+          <div class="col-md-4 text-center text-bubble justify-content-center align-items-center" ng-if="projectInfo.project.website != null">
+            <div class="row justify-content-center">
+            <h3>Live Demo</h3>
+              </div>
+            <hr>
+            <a class="btn btn-primary" ng-href="{{projectInfo.project.website}}" ng-click="setProject(true, x.id)">View Live Demo</a>
+          </div>
         </div>
       </div>
     </div>
