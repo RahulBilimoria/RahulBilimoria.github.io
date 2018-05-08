@@ -117,23 +117,32 @@
             </a>
 
           </div>
-          <div class="col-md-4 text-center text-bubble justify-content-center align-items-center" ng-if="projectInfo.project.website == null">
-            <div class="row justify-content-center">
-            <h3>Features</h3>
+          <div class="col-md-4 text-center text-bubble justify-content-center align-items-center">
+            <div ng-if="projectInfo.project.website == null">
+              <div class="row justify-content-center">
+                <h3>Features</h3>
               </div>
+              <hr>
+              <ul>
+                <span ng-repeat="x in projectInfo.project.features">
+                  <li><p>{{x}}</p></li>
+                </span>
+              </ul>
+            </div>
+            <div ng-if="projectInfo.project.website != null">
+              <div class="row justify-content-center">
+              <h3>Live Demo</h3>
+                </div>
+              <hr>
+              <a class="btn btn-primary" ng-href="{{projectInfo.project.website}}">View Live Demo</a>
+            </div>
             <hr>
-            <ul>
-              <span ng-repeat="x in projectInfo.project.features">
-                <li><p>{{x}}</p></li>
-              </span>
-            </ul>
-          </div>
-          <div class="col-md-4 text-center text-bubble justify-content-center align-items-center" ng-if="projectInfo.project.website != null">
             <div class="row justify-content-center">
-            <h3>Live Demo</h3>
+              <h3>Github Files</h3>
               </div>
-            <hr>
-            <a class="btn btn-primary" ng-href="{{projectInfo.project.website}}" ng-click="setProject(true, x.id)">View Live Demo</a>
+            <span ng-repeat="x in projectInfo.project.github">
+              <a class="btn btn-primary" ng-href="{{x}}">Link {{$index + 1}}</a>
+            </span>
           </div>
         </div>
       </div>
