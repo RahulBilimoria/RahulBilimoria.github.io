@@ -8,7 +8,7 @@
     "lang": "C# (Unity)",
     "project": {
       "coverimg": "./img/ER-livingroom-2.png",
-      "slideshow": " ",
+      "slideshow": ["escaperoom/cooking.png", "escaperoom/tv.png", "escaperoom/bathroom.png", "escaperoom/exit.png"],
       "video": " ",
       "description": "You wake up in the middle of an unfamiliar living room. You dont remember how you got there and theres no visible way to get out. All you have to go on is a door with 6 pool ball coloured holes above it. There are no windows, there are no phones, there is no hope of freedom.",
       "features": ["Interactable Objects", "Cooking", "Interactive Physics", "Plenty of Puzzles"],
@@ -69,7 +69,7 @@
     "project": {
       "coverimg": "./img/tavern-2.png",
       "gif": " ",
-      "video": " ",
+      "slideshow": ["tavern/dining.png", "tavern/feast.png", "tavern/drinks.png"],
       "description": "A lab which experiments with the interaction of various items and implements teleportation as a means of navigation in virtual reality. Items can be picked up, manipulated with some having secondary uses.",
       "features": ["Interactable Objects", "Activation", "Navigation", "Safe VR Implementation"],
       "development": "This lab was developed in Unity for the HTC Vive. It uses the SteamVR platform and scripts written in C#",
@@ -89,7 +89,7 @@
     "project": {
       "coverimg": "./img/vr-lab4-2.png",
       "gif": " ",
-      "video": " ",
+      "slideshow": ["lab4/info.png", "lab4/objects.png", "lab4/controls.png"],
       "description": "A lab that implements the manipulation of objects in virtual reality through ingame inputs such as levers, buttons, and wheels",
       "features": ["Interactable Objects", "Object Manipulation", "Input Interaction", "Safe VR Practices"],
       "development": "This lab was developed in Unity for the HTC Vive. It uses the SteamVR platform and scripts written in C#",
@@ -114,6 +114,7 @@
       "development": "This webapp was developed for a Web Development course over the span of 2 weeks.",
       "tools": ["HTML", "CSS", "Bootstrap", "AngularJS"],
       "github": ["https://github.com/RahulBilimoria/TasksList"],
+      "website": "",
       "textcolor": "",
       "backgroundcolor": ""
     }
@@ -134,6 +135,7 @@
       "development": "This webapp was developed for a Web Development course over the span of 2 weeks.",
       "tools": ["HTML", "CSS", "Javascript", "Open Weather Map API", "Bootstrap"],
       "github": ["https://github.com/RahulBilimoria/WeatherForecast"],
+      "website": "",
       "textcolor": "",
       "backgroundcolor": ""
     }

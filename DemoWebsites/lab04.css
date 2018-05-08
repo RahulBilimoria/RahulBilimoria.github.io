@@ -1,0 +1,43 @@
+.addTask {
+    visibility: hidden;
+}
+
+.addTask ul{
+    padding: 0;
+    list-style-type: none;
+}
+.addTask li{
+    margin-top: 10px;
+    
+}
+
+.addTask li p{
+    margin-bottom: 0px;
+}
+
+.row.content {
+    height: 550px
+}
+
+.sidenav {
+        background-color: #f1f1f1;
+        height: 100%;
+        position:fixed;
+        top:0;    
+    }
+
+main {
+        position: relative;
+        margin-left: 30%;
+      }
+
+@media screen and (max-width: 767px) {
+      .row.content {
+          height: auto;
+    }
+    
+    main {
+        position: static;
+        margin-left: 0px;
+    }
+}

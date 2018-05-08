@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+  <script type="text/javascript" src="todo.json"></script>
+  <script src="controller.js"></script>
+  <script src="lab04.js"></script>
+  <link rel="stylesheet" href="lab04.css">
+</head>
+<body>
+
+<nav class="navbar navbar-inverse visible-xs">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#">Tasks</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Add Task</a></li>
+        <li><a href="#">All Tasks</a></li>
+        <li><a href="#">Finished</a></li>
+        <li><a href="#">Incomplete</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div ng-app="todo" ng-controller="todoController">
+<div class="container-fluid">
+  <div class="row content">
+    <div class="col-sm-3 sidenav hidden-xs">
+      <h2>Tasks</h2>
+      <ul class="nav nav-pills nav-stacked">
+        <li class="active"><a href="#" onClick="showAddTask()">Add Task</a></li>
+        <li><a href="#" ng-click="showList(true,true)">All Tasks</a></li>
+        <li><a href="#" ng-click="showList(true,false)">Finished</a></li>
+        <li><a href="#" ng-click="showList(false,false)" >Incomplete</a></li>
+      </ul><br>
+        <div class="nav addTask col-sm-9">
+      <ul>
+          <li>
+          <p>Task Name</p>
+              <input type="text" ng-model="taskName">
+          </li>
+          <li>
+          <p>Task Description</p>
+              <input type="text" ng-model="taskDesc">
+          </li>
+          <li>
+              <input type="submit" value="Add" ng-click="add()">
+          </li>
+          </ul>
+      </div>
+    </div>
+      
+    <br>
+    <main>
+    <span id="List" ng-repeat="x in todo" ng-if="x.complete === show || both">
+          <div class="col-sm-6">
+            <div class="well">
+              <h4>{{x.task}}</h4>
+              <p>{{x.description}}</p>
+            </div>
+          </div>
+          <div class="col-sm-3" style="text-align:center">
+            <div class="well">
+              <p>Task Controls</p>
+              <input style="height:40px;width:40px" class="btn btn-success" type="button" value="C" ng-click="complete(x)">
+              <input style="height:40px;width:40px" class="btn btn-danger" type="button" value="X" ng-click="remove(x)">
+            </div>
+          </div>
+        </span>
+    </main>
+  </div>
+</div>
+    </div>
+
+</body>
+</html>
