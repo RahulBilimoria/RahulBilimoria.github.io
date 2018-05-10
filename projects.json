@@ -8,6 +8,7 @@
     "lang": "C# (Unity)",
     "project": {
       "coverimg": "./img/ER-livingroom-2.png",
+      "title": "Can You Escape?",
       "slideshow": ["escaperoom/cooking.png", "escaperoom/tv.png", "escaperoom/bathroom.png", "escaperoom/exit.png"],
       "video": " ",
       "description": "You wake up in the middle of an unfamiliar living room. You dont remember how you got there and theres no visible way to get out. All you have to go on is a door with 6 pool ball coloured holes above it. There are no windows, there are no phones, there is no hope of freedom.",
@@ -29,6 +30,7 @@
     "lang": "Java (Netbeans)",
     "project": {
       "coverimg": "./img/pokemon-rpg-2.png",
+      "title": "Gotta Catch 'Em All!",
       "slideshow": ["pkmn/battle.png", "pkmn/level.png", "pkmn/route1.png", "pkmn/storage.png"],
       "video": " ",
       "description": "After moving to Sevilla Village with your parents, Professor Cyrus asks you to go on an adventure to help him complete his pokedex. Gym Leaders, Police, Team Rocket, an unknown faction and strong wild pokemon stand in your way to becoming the pokemon champion.",
@@ -50,8 +52,9 @@
     "lang": "C++ (OpenGL Library)",
     "project": {
       "coverimg": "./img/submarine-war-2.png",
+      "title": "I Love The Smell Of Submarines In The Morning",
       "gif": " ",
-      "video": " ",
+      "slideshow": ["submarine/1.png", "submarine/2.png", "submarine/3.png"],
       "description": "A c++ game built to test the libraries and features of the OpenGL Library. The user controls a submarine and can fight with AI controlled enemies. The submarine was build using OpenGL primitives with basic input handling to move the player, the terrain was made using the gaussian formula to create hills and all the submarines are texture mapped. The game uses hitbox detection to check whether the torpedo collides with an enemy.",
       "features": ["AI Controlled Enemies", "Combat", "Animated Movement", "Texture Mapping"],
       "development": "This game was developed in C++ using the OpenGL Library. It was developed for a computer graphics course as the major assignment and was built in three parts over the course of four months.",
@@ -71,6 +74,7 @@
     "lang": "C# (Unity)",
     "project": {
       "coverimg": "./img/tavern-2.png",
+      "title": "Theres No Place Like Home",
       "gif": " ",
       "slideshow": ["tavern/dining.png", "tavern/feast.png", "tavern/drinks.png"],
       "description": "A lab which experiments with the interaction of various items and implements teleportation as a means of navigation in virtual reality. Items can be picked up, manipulated with some having secondary uses.",
@@ -92,6 +96,7 @@
     "lang": "C# (Unity)",
     "project": {
       "coverimg": "./img/vr-lab4-2.png",
+      "title": "Say Hello To My Little Lab!",
       "gif": " ",
       "slideshow": ["lab4/info.png", "lab4/objects.png", "lab4/controls.png"],
       "description": "A lab that implements the manipulation of objects in virtual reality through ingame inputs such as levers, buttons, and wheels",
@@ -113,6 +118,7 @@
     "lang": "AngularJS",
     "project": {
       "coverimg": "./img/task-list-1.png",
+      "title": "Hail To The Task, Baby",
       "video": " ",
       "description": "A responsive, mobile first, single page web application for adding, removing, and the organization of tasks",
       "features": ["HTML", "CSS", "Bootstrap", "AngularJS"],
@@ -133,6 +139,7 @@
     "lang": "Javascript",
     "project": {
       "coverimg": "./img/weather-forecast-1.png",
+      "title": "Show Me The Weather!",
       "gif": " ",
       "video": " ",
       "description": "A responsive, mobile first, web application to find the five day forecast of any location in celcius or fahrenheit",

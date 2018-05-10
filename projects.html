@@ -71,7 +71,7 @@
         </div>
         <div class="row text-bubble d-flex justify-content-center">
           <div class="col-md-8 text-justify px-5 py-5">
-            <h3 class="text-center">Can you escape?</h3>
+            <h3 class="text-center" ng-bind="projectInfo.project.title">Can you escape?</h3>
             <hr>
             <p ng-bind="projectInfo.project.description">data here</p>
             <hr>
@@ -91,8 +91,8 @@
             </div>
         </div>
         
-        <div class="row text-bubble justify-content-center">
-          <div id="demo" class="carousel slide col-md-8" data-ride="carousel">
+        <div class="row text-bubble">
+          <div id="demo" class="col-xs-12 col-sm-8 col-md-8 carousel slide" data-ride="carousel">
 
             <!-- Indicators -->
             <ul class="carousel-indicators">
@@ -102,9 +102,9 @@
             </ul>
 
             <!-- The slideshow -->
-            <div class="carousel-inner">
-              <div class="carousel-item" ng-repeat="x in projectInfo.project.slideshow" ng-class="{active: $first}">
-                <img ng-src="./img/{{x}}" alt="image">
+            <div class="carousel-inner" style="width:100%;height:100%">
+              <div class="carousel-item" ng-repeat="x in projectInfo.project.slideshow" ng-class="{active: $first}" style="width:100%;height:100%">
+                <img ng-src="./img/{{x}}" alt="image" class="img-responsive" style="width:100%;height:100%">
               </div>
             </div>
 
@@ -117,7 +117,7 @@
             </a>
 
           </div>
-          <div class="col-md-4 text-center text-bubble justify-content-center align-items-center">
+          <div class="col-xs-12 col-sm-4 col-md-4 text-center text-bubble justify-content-center align-items-center mx-0 my-3">
             <div ng-if="projectInfo.project.website == null">
               <div class="row justify-content-center">
                 <h3>Features</h3>
