@@ -1,0 +1,89 @@
+<div class="container-fluid mt-0 ng-cloak" style="margin-top:25px">
+  <div class="row">
+    <img class="img-fluid mb-3 mb-md-0" ng-src={{projectInfo.project.coverimg}} style="width:100%" alt="Living Room">
+  </div>
+  <div class="row text-bubble d-flex justify-content-center">
+    <div class="col-md-8 text-justify px-5 py-5">
+      <h3 class="text-center" ng-bind="projectInfo.project.title">title here</h3>
+      <hr>
+      <p ng-bind="projectInfo.project.description">data here</p>
+      <hr>
+    </div>
+  </div>
+  <div class="row text-bubble-inverted d-flex justify-content-center pb-5 mb-0 text-center">
+      <div class="col-md-10 px-5 pt-5 pb-0 mb-0">
+        <h3 class="text-center">Development Tools</h3><hr>
+        <div class="row text-bubble-inverted justify-content-center">
+          <span class="col-md-2 col-sm-6 mx-3" ng-repeat="x in projectInfo.project.tools">
+            <div class="col-md-12 text-center">
+              <img class="img-thumbnail" ng-src="{{getIcon(x)}}" alt="icon">
+              <h5>{{x}}</h5>
+            </div>
+          </span>
+        </div>
+      </div>
+  </div>
+  
+  <div class="row text-bubble">
+    <div uib-carousel active="active" interval="5000" no-wrap="false">
+      <div uib-slide ng-repeat="slide in slideshow track by $index" index="$index" style="min-width:100%;min-height:100%">
+        <img ng-src="./img/{{slide}}" alt="image" class="img-fluid" style="min-width:100%;min-height:100%">
+      </div>
+    </div>
+  
+
+  <!--<div class="row text-bubble">
+    <div id="demo" class="col-xs-12 col-sm-8 col-md-8 carousel slide" data-ride="carousel">
+
+      <!-- Indicators --
+      <ul class="carousel-indicators">
+        <span ng-repeat="x in projectInfo.project.slideshow">
+          <li data-target="#demo" data-slide-to="{{$index}}" ng-class="{active: $first}"></li>
+        </span>
+      </ul>
+
+      <!-- The slideshow --
+      <div class="carousel-inner" style="width:100%;height:100%">
+        <div class="carousel-item" ng-repeat="x in projectInfo.project.slideshow" ng-class="{active: $first}" style="width:100%;height:100%">
+          <img ng-src="./img/{{x}}" alt="image" class="img-responsive" style="width:100%;height:100%">
+        </div>
+      </div>
+
+      <!-- Left and right controls --
+      <a class="carousel-control-prev" href="" data-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+      </a>
+      <a class="carousel-control-next" href="" data-slide="next">
+        <span class="carousel-control-next-icon"></span>
+      </a>
+
+    </div> -->
+    <div class="col-xs-12 col-sm-4 col-md-4 text-center text-bubble justify-content-center align-items-center mx-0 my-3">
+      <div ng-if="projectInfo.project.website == null">
+        <div class="row justify-content-center">
+          <h3>Features</h3>
+        </div>
+        <hr>
+        <ul>
+          <span ng-repeat="x in projectInfo.project.features">
+            <li><p>{{x}}</p></li>
+          </span>
+        </ul>
+      </div>
+      <div ng-if="projectInfo.project.website != null">
+        <div class="row justify-content-center">
+        <h3>Live Demo</h3>
+          </div>
+        <hr>
+        <a class="btn btn-primary" ng-href="{{projectInfo.project.website}}">View Live Demo</a>
+      </div>
+      <hr>
+      <div class="row justify-content-center">
+        <h3>Github Files</h3>
+        </div>
+      <span ng-repeat="x in projectInfo.project.github">
+        <a class="btn btn-primary" ng-href="{{x}}">Link {{$index + 1}}</a>
+      </span>
+    </div>
+  </div>
+</div>

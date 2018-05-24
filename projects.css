@@ -1,7 +1,10 @@
+.nav, .pagination, .carousel, .panel-title a { 
+  cursor: pointer; 
+}
+
 .text-bubble {
   color: #FFFFFF;
   background: #659DBD;
-
 }
 
 .text-bubble-inverted {

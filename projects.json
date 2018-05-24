@@ -4,7 +4,7 @@
     "description": "A virtual reality escape room game developed in Unity using C# and the HTC Vive",
     "tags":["game", "vr"],
     "img": "./img/ER-livingroom-1.png",
-    "link": "#vrescaperoom",
+    "link": "#!vrescaperoom",
     "lang": "C# (Unity)",
     "project": {
       "coverimg": "./img/ER-livingroom-2.png",
@@ -26,7 +26,7 @@
     "description": "A classic pokemon RPG developed in Java",
     "tags":["game"],
     "img": "./img/pokemon-rpg-1.png",
-    "link": "#pokemonrpg",
+    "link": "#!pokemonrpg",
     "lang": "Java (Netbeans)",
     "project": {
       "coverimg": "./img/pokemon-rpg-2.png",
@@ -48,7 +48,7 @@
     "description": "A 3D game where you fight enemies as a submarine",
     "tags":["game"],
     "img": "./img/submarine-war-1.png",
-    "link": "#subbattle",
+    "link": "#!subbattle",
     "lang": "C++ (OpenGL Library)",
     "project": {
       "coverimg": "./img/submarine-war-2.png",
@@ -70,7 +70,7 @@
     "description": "A course lab assignment built to test the capabilities of navigation and object manipulation in Virtual Reality",
     "tags":["vr"],
     "img": "./img/tavern-1.png",
-    "link": "#tavernvr",
+    "link": "#!tavernvr",
     "lang": "C# (Unity)",
     "project": {
       "coverimg": "./img/tavern-2.png",
@@ -92,7 +92,7 @@
     "description": "A course lab assignment built experiment with different types of input possible with Virtual Reality",
     "tags":["vr"],
     "img": "./img/vr-lab4-1.png",
-    "link": "#vrinteraction",
+    "link": "#!vrinteraction",
     "lang": "C# (Unity)",
     "project": {
       "coverimg": "./img/vr-lab4-2.png",
@@ -114,7 +114,7 @@
     "description": "A web application designed to help with the organization of tasks",
     "tags":["webdev"],
     "img": "./img/task-list-1.png",
-    "link": "#task",
+    "link": "#!task",
     "lang": "AngularJS",
     "project": {
       "coverimg": "./img/task-list-1.png",
@@ -135,7 +135,7 @@
     "description": "A web application built to forecast the weather using data retrieved from an API",
     "tags":["webdev"],
     "img": "./img/weather-forecast-1.png",
-    "link": "#weather",
+    "link": "#!weather",
     "lang": "Javascript",
     "project": {
       "coverimg": "./img/weather-forecast-1.png",
