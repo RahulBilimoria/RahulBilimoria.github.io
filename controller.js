@@ -3,10 +3,10 @@ var app = angular.module("projects", ["ngRoute", "ngAnimate", "ui.bootstrap"]);
 app.config(function($routeProvider) {
   $routeProvider
     .when("/", {
-      templateUrl: "projects.htm",
+      templateUrl: "projects2.html",
   })
     .otherwise({
-      templateUrl: "project.htm",
+      templateUrl: "project.html",
   })
 })
 
