@@ -16,6 +16,10 @@
       var scene = new THREE.Scene();
       var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
       
+      var ringObj;
+      var githubObj;
+      var linkedinObj;
+      
       var renderer = new THREE.WebGLRenderer({antialias: true});
       renderer.setSize(window.innerWidth, window.innerHeight);
       document.body.appendChild(renderer.domElement);
@@ -31,8 +35,9 @@
       
       var controls = new THREE.OrbitControls(camera, renderer.domElement);
       
-      //loader for ring
+      //loader for all objects
       var matLoader = new THREE.MTLLoader();
+      //anisotropy for sharpness adjustment
       var maxAnisotropy = renderer.capabilities.getMaxAnisotropy();
       
       matLoader.load('models/name.mtl', function(mats){
@@ -41,34 +46,47 @@
         objLoader.setMaterials(mats);
         mats.materials.Ring.map.anisotropy = maxAnisotropy;
         objLoader.load('models/name.obj',function (object) {
+          ringObj = object;
           scene.add(object);
         });
       });
+      
+      matLoader.load('models/github.mtl', function(mats) {
+        mats.preload();
+        var objLoader = new THREE.OBJLoader();
+        objLoader.setMaterials(mats);
+        objLoader.load('models/github.obj', function(object) {
+          githubObj = object;
+          githubObj.position.set(4,0,4);
+          scene.add(object);
+        })
+      })
+      
+      matLoader.load('models/linkedin.mtl', function(mats) {
+        mats.preload();
+        var objLoader = new THREE.OBJLoader();
+        objLoader.setMaterials(mats);
+        objLoader.load('models/linkedin.obj', function(object) {
+          linkedinObj = object;
+          linkedinObj.position.set(-4,0,4);
+          scene.add(object);
+        })
+      })
           
-      var sunGeometry = new THREE.SphereGeometry(0.5, 32, 32);
-      var geometry = new THREE.BoxGeometry(1,1,1);
+      var sunGeometry = new THREE.SphereGeometry(0.8, 32, 32);
       var material = new THREE.MeshPhongMaterial({color: 0xFFFF00, wireframe: false});
-      var material2 = new THREE.MeshPhongMaterial({color: 0xFF0000, wireframe:false});
-      
-      var cube = new THREE.Mesh(geometry, material);
-      //scene.add(cube);
-      var cube2 = new THREE.Mesh(geometry, material2);
-      //scene.add(cube2);
+
       var sun = new THREE.Mesh(sunGeometry, material);
-      //scene.add(sun);
+      scene.add(sun);
       
-      cube2.position.x = 1;
-      
-      var pointLight = new THREE.PointLight();
-      
-      var light = new THREE.AmbientLight(0xFFFFFF, 1.0);
+      var light = new THREE.AmbientLight(0xffffff, 1.75);
       scene.add(light);
-      scene.add(pointLight);
       
-      camera.position.z = 3;
+      camera.position.z = 5;
       
       var update = function(){
-        
+        //use loading manager
+        ringObj.rotateY(0.0174533);
       };
       
       var render = function(){
