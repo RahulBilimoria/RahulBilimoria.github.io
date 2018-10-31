@@ -12,67 +12,78 @@
     <script src="js/OrbitControls.js"></script>
     <script src="js/OBJLoader.js"></script>
     <script src="js/MTLLoader.js"></script>
+    <script src="js/tween.min.js"></script>
     <script>
-      var scene = new THREE.Scene();
-      var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+      var scene;
+      var camera;
+      var renderer;
+      var controls;
       
       var ringObj;
       var githubObj;
       var linkedinObj;
+      var objArray = [];
       
-      var renderer = new THREE.WebGLRenderer({antialias: true});
-      renderer.setSize(window.innerWidth, window.innerHeight);
-      document.body.appendChild(renderer.domElement);
+      var tween;
+      var isTweening;
       
-      window.addEventListener('resize', function(){
-      var width = window.innerWidth;
-      var height = window.innerHeight;
-      renderer.setSize(width, height);
-      camera.aspect = width / height;
-      camera.updateProjectionMatrix();
-    });
+      init();
+      loadScene();
       
+      function init(){
+        scene = new THREE.Scene();
+        camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 100);
+        renderer = new THREE.WebGLRenderer({antialias:true});
+        
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+        
+        //gets object of whatever was clicked
+        window.addEventListener('mousedown', onMouseClick, false);
+        controls = new THREE.OrbitControls(camera, renderer.domElement);
+        
+        isTweening = false;
+      }
       
-      var controls = new THREE.OrbitControls(camera, renderer.domElement);
-      
-      //loader for all objects
-      var matLoader = new THREE.MTLLoader();
-      //anisotropy for sharpness adjustment
-      var maxAnisotropy = renderer.capabilities.getMaxAnisotropy();
-      
-      matLoader.load('models/name.mtl', function(mats){
-        mats.preload();
-        var objLoader = new THREE.OBJLoader();
-        objLoader.setMaterials(mats);
-        mats.materials.Ring.map.anisotropy = maxAnisotropy;
-        objLoader.load('models/name.obj',function (object) {
-          ringObj = object;
-          scene.add(object);
+      function loadScene(){
+        var mtlLoader = new THREE.MTLLoader();
+        var maxAnisotropy = renderer.capabilities.getMaxAnisotropy();
+        
+        mtlLoader.load('models/name.mtl', function(mats){
+          mats.preload();
+          var objLoader = new THREE.OBJLoader();
+          objLoader.setMaterials(mats);
+          mats.materials.Ring.map.anisotropy = maxAnisotropy;
+          objLoader.load('models/name.obj',function (object) {
+            ringObj = object;
+            scene.add(object);
+          });
         });
-      });
-      
-      matLoader.load('models/github.mtl', function(mats) {
-        mats.preload();
-        var objLoader = new THREE.OBJLoader();
-        objLoader.setMaterials(mats);
-        objLoader.load('models/github.obj', function(object) {
-          githubObj = object;
-          githubObj.position.set(4,0,4);
-          scene.add(object);
-        })
-      })
-      
-      matLoader.load('models/linkedin.mtl', function(mats) {
-        mats.preload();
-        var objLoader = new THREE.OBJLoader();
-        objLoader.setMaterials(mats);
-        objLoader.load('models/linkedin.obj', function(object) {
-          linkedinObj = object;
-          linkedinObj.position.set(-4,0,4);
-          scene.add(object);
-        })
-      })
-          
+        
+        mtlLoader.load('models/github.mtl', function(mats) {
+          mats.preload();
+          var objLoader = new THREE.OBJLoader();
+          objLoader.setMaterials(mats);
+          objLoader.load('models/github.obj', function(object) {
+            githubObj = object;
+            githubObj.position.set(4,0,4);
+            objArray.push(githubObj);
+            scene.add(object);
+          });
+        });
+        
+        mtlLoader.load('models/linkedin.mtl', function(mats) {
+          mats.preload();
+          var objLoader = new THREE.OBJLoader();
+          objLoader.setMaterials(mats);
+          objLoader.load('models/linkedin.obj', function(object) {
+            linkedinObj = object;
+            linkedinObj.position.set(-4,0,4);
+            objArray.push(linkedinObj);
+            scene.add(object);
+          });
+        });
+        
       var sunGeometry = new THREE.SphereGeometry(0.8, 32, 32);
       var material = new THREE.MeshPhongMaterial({color: 0xFFFF00, wireframe: false});
 
@@ -82,11 +93,17 @@
       var light = new THREE.AmbientLight(0xffffff, 1.75);
       scene.add(light);
       
-      camera.position.z = 5;
+      camera.position.z = 10;
+      }
       
       var update = function(){
         //use loading manager
         ringObj.rotateY(0.0174533);
+        githubObj.lookAt(camera.position);
+        linkedinObj.lookAt(camera.position);
+        if(isTweening){
+          TWEEN.update();
+        }
       };
       
       var render = function(){
@@ -97,6 +114,47 @@
         requestAnimationFrame(loop);
         update();
         render();
+      }
+
+      function onMouseClick(event) {
+        event.preventDefault();
+        //console.log(objArray);
+        
+        var raycaster = new THREE.Raycaster();
+        var vector = new THREE.Vector3();
+        
+        vector.set((event.layerX/window.innerWidth) * 2 - 1,
+                   (event.layerY/window.innerHeight) * 2 - 1,
+                    0.5);
+        
+        raycaster.setFromCamera(vector, camera);
+        
+        var intersects = raycaster.intersectObjects(objArray, true);
+        if (intersects.length > 0){
+          lookAtObject(intersects[0].object.parent);
+        }
+      }
+      
+      function lookAtObject(obj){
+        var position = {x: camera.position.x, y: camera.position.y, z: camera.position.z};
+        var target = {x: obj.position.x, y: obj.position.y, z: obj.position.z + 3};
+        tween = new TWEEN.Tween(position).to(target, 1000);
+        tween.onStart(function(){
+          controls.enabled = false;
+        });
+        tween.onUpdate(function(){
+          camera.position.x = position.x;
+          camera.position.y = position.y;
+          camera.position.z = position.z;
+          camera.lookAt(obj.position);
+        });
+        tween.onComplete(function(){
+          isTweening = false;
+          console.log('Done');
+        });
+        isTweening = true;
+        tween.start();
+        //camera.lookAt(obj.position);
       }
       
       loop();
