@@ -4,7 +4,10 @@
   "description": "Website containing all of my work",
   "main": "controller.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "babel": "babel --presets es2015 src/index.js -o build/index-bundle.js",
+    "start": "webpack-dev-server --open --mode development",
+    "webpack": "webpack --mode production"
   },
   "repository": {
     "type": "git",
@@ -17,8 +20,6 @@
   },
   "homepage": "https://github.com/RahulBilimoria/RahulBilimoria.github.io#readme",
   "keywords": [],
-  "dependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-preset-react-app": "^3.1.2"
-  }
+  "dependencies": {},
+  "devDependencies": {}
 }

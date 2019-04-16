@@ -3,21 +3,21 @@
   <head>
     <title>ThreeJS Intro Page Demo</title>
     <style>
-      body { 
+      body {
         text-align: center;
         margin: 0px;
         overflow: hidden;
       }
       canvas {
-        width:100%; 
-        height: 100%; 
+        width: 100%;
+        height: 100%;
       }
       #info {
         position: absolute;
         top: 5px;
         width: 100%;
         z-index: 100;
-        color:white;
+        color: white;
       }
       #back {
         position: fixed;
@@ -33,7 +33,7 @@
       }
       .linkButton {
         padding: 8px;
-        color: #FFFFFF;
+        color: #ffffff;
         text-decoration: none;
         background-color: #555;
         opacity: 0.7;
@@ -42,9 +42,9 @@
         cursor: pointer;
         opacity: 1;
       }
-      .label{
-		color: #FFF;
-		font-family: sans-serif;
+      .label {
+        color: #fff;
+        font-family: sans-serif;
         padding-top: 8px;
         padding-bottom: 8px;
       }
@@ -52,10 +52,10 @@
   </head>
   <body>
     <div id="info">
-    Welcome to my website. To get started, click on an icon to visit its page.
+      Welcome to my website. To get started, click on an icon to visit its page.
     </div>
     <div id="back">
-    Back
+      Back
     </div>
     <script src="js/three.js"></script>
     <script src="js/OrbitControls.js"></script>
@@ -69,174 +69,203 @@
       var renderer;
       var labelRenderer;
       var controls;
-      
+
       var ringObj;
-      var githubObj; var githubText;
-      var linkedinObj; var linkedinText;
-      var projectsObj; var projectsText;
+      var githubObj;
+      var githubText;
+      var linkedinObj;
+      var linkedinText;
+      var projectsObj;
+      var projectsText;
       var objArray = [];
-      
+
       var tween;
       var isTweening;
       var lastPos;
       var lastObj;
-            
+
       init();
       loadScene();
-      
-      function init(){
+
+      function init() {
         scene = new THREE.Scene();
-        camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 10000);
-        renderer = new THREE.WebGLRenderer({antialias:true});
-        
+        camera = new THREE.PerspectiveCamera(
+          75,
+          window.innerWidth / window.innerHeight,
+          0.1,
+          10000
+        );
+        renderer = new THREE.WebGLRenderer({ antialias: true });
+
         renderer.setSize(window.innerWidth, window.innerHeight);
         document.body.appendChild(renderer.domElement);
-        
+
         labelRenderer = new THREE.CSS2DRenderer();
         labelRenderer.setSize(window.innerWidth, window.innerHeight);
-        labelRenderer.domElement.style.position = 'absolute';
-		labelRenderer.domElement.style.top = 0;
-		document.body.appendChild( labelRenderer.domElement );
-        
+        labelRenderer.domElement.style.position = "absolute";
+        labelRenderer.domElement.style.top = 0;
+        document.body.appendChild(labelRenderer.domElement);
+
         //back button
-        document.getElementById('back').addEventListener('click', goBack);
-        document.getElementById('back').style.visibility = 'hidden';
-        
+        document.getElementById("back").addEventListener("click", goBack);
+        document.getElementById("back").style.visibility = "hidden";
+
         //gets object of whatever was clicked
-        window.addEventListener('mouseup', onMouseClick, false);
+        window.addEventListener("click", selectObject, false);
+        //window.addEventListener("mouseup", selectObject, false);
         controls = new THREE.OrbitControls(camera, labelRenderer.domElement);
-        
+
         isTweening = false;
       }
-      
-      function loadScene(){
+
+      function loadScene() {
         var manager = new THREE.LoadingManager();
         var mtlLoader = new THREE.MTLLoader();
         var maxAnisotropy = renderer.capabilities.getMaxAnisotropy();
-        
+
         manager.onStart = function(url, itemsLoaded, itemsTotal) {
           console.log("Started loading: " + url + ".");
-        }
-        
+        };
+
         manager.onLoad = function() {
           console.log("Finished loading models");
-        }
-        
+        };
+
         manager.onProgress = function(url, itemsLoaded, itemsTotal) {
           console.log("Loading: " + url + ".");
-        }
-        
-        mtlLoader.load('models/name.mtl', function(mats){
+        };
+
+        mtlLoader.load("models/name.mtl", function(mats) {
           mats.preload();
           var objLoader = new THREE.OBJLoader(manager);
           objLoader.setMaterials(mats);
           mats.materials.Ring.map.anisotropy = maxAnisotropy;
-          objLoader.load('models/name.obj',function (object) {
+          objLoader.load("models/name.obj", function(object) {
             ringObj = object;
-            ringObj.position.set(0,0,0);
+            ringObj.position.set(0, 0, 0);
             scene.add(object);
           });
         });
-        
-        mtlLoader.load('models/github.mtl', function(mats) {
+
+        mtlLoader.load("models/github.mtl", function(mats) {
           mats.preload();
           var objLoader = new THREE.OBJLoader(manager);
           objLoader.setMaterials(mats);
-          objLoader.load('models/github.obj', function(object) {
+          objLoader.load("models/github.obj", function(object) {
             githubObj = object;
-            githubObj.position.set(6,5,4);
+            githubObj.position.set(6, 5, 4);
             objArray.push(githubObj);
-            
-            githubText = document.createElement('div');
-            githubText.className = 'label';
-            var a = document.createElement('a');
+
+            githubText = document.createElement("div");
+            githubText.className = "label";
+            var a = document.createElement("a");
             a.appendChild(document.createTextNode("Visit Page"));
             a.className = "linkButton";
             a.title = "Github Portfolio";
             a.href = "https://github.com/RahulBilimoria";
             githubText.appendChild(a);
-            githubText.style.marginTop = '-1em';
-            githubText.style.visibility='hidden';
+            githubText.style.marginTop = "-1em";
+            githubText.style.visibility = "hidden";
             var githubLabel = new THREE.CSS2DObject(githubText);
-            githubLabel.position.set(0,1.2,0);
+            githubLabel.position.set(0, 1.2, 0);
             githubObj.add(githubLabel);
-            
+
             scene.add(object);
           });
         });
-        
-        mtlLoader.load('models/linkedin.mtl', function(mats) {
+
+        mtlLoader.load("models/linkedin.mtl", function(mats) {
           mats.preload();
           var objLoader = new THREE.OBJLoader(manager);
           objLoader.setMaterials(mats);
-          objLoader.load('models/linkedin.obj', function(object) {
+          objLoader.load("models/linkedin.obj", function(object) {
             linkedinObj = object;
-            linkedinObj.position.set(-8,-4,1);
+            linkedinObj.position.set(-8, -4, 1);
             objArray.push(linkedinObj);
-            
-            linkedinText = document.createElement('div');
-            linkedinText.className = 'label';
-            var a = document.createElement('a');
+
+            linkedinText = document.createElement("div");
+            linkedinText.className = "label";
+            var a = document.createElement("a");
             a.appendChild(document.createTextNode("Visit Page"));
             a.className = "linkButton";
             a.title = "LinkedIn Page";
             a.href = "https://www.linkedin.com/in/rahul-bilimoria/";
             linkedinText.appendChild(a);
-            linkedinText.style.marginTop = '-1em';
-            linkedinText.style.visibility='hidden';
+            linkedinText.style.marginTop = "-1em";
+            linkedinText.style.visibility = "hidden";
             var linkedinLabel = new THREE.CSS2DObject(linkedinText);
-            linkedinLabel.position.set(0,1.2,0);
+            linkedinLabel.position.set(0, 1.2, 0);
             linkedinObj.add(linkedinLabel);
-            
+
             scene.add(object);
           });
         });
-        
-        mtlLoader.load('models/projects.mtl', function(mats) {
+
+        mtlLoader.load("models/projects.mtl", function(mats) {
           mats.preload();
           var objLoader = new THREE.OBJLoader(manager);
           objLoader.setMaterials(mats);
-          objLoader.load('models/projects.obj', function(object) {
+          objLoader.load("models/projects.obj", function(object) {
             projectsObj = object;
             projectsObj.position.set(-6, 2, -10);
             objArray.push(projectsObj);
-            
-            projectsText = document.createElement('div');
-            projectsText.className = 'label';
-            var a = document.createElement('a');
+
+            projectsText = document.createElement("div");
+            projectsText.className = "label";
+            var a = document.createElement("a");
             a.appendChild(document.createTextNode("Visit Page"));
             a.className = "linkButton";
             a.title = "List of Projects";
             a.href = "http://rahulbilimoria.me/projects.html";
             projectsText.appendChild(a);
-            projectsText.style.marginTop = '-1em';
-            projectsText.style.visibility = 'hidden';
+            projectsText.style.marginTop = "-1em";
+            projectsText.style.visibility = "hidden";
             var projectsLabel = new THREE.CSS2DObject(projectsText);
-            projectsLabel.position.set(0,1.2,0);
+            projectsLabel.position.set(0, 1.2, 0);
             projectsObj.add(projectsLabel);
-            
+
             scene.add(object);
           });
         });
-        
+
         //Build for the skybox
         var skyboxGeo = new THREE.CubeGeometry(10000, 10000, 10000);
         var skyboxMats = [
-          new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load("img/skybox/front.png"), side: THREE.DoubleSide}),
-          new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load("img/skybox/back.png"), side: THREE.DoubleSide}),
-          new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load("img/skybox/up.png"), side: THREE.DoubleSide}),
-          new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load("img/skybox/down.png"), side: THREE.DoubleSide}),
-          new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load("img/skybox/right.png"), side: THREE.DoubleSide}),
-          new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load("img/skybox/left.png"), side: THREE.DoubleSide})
-        ]
-      
+          new THREE.MeshBasicMaterial({
+            map: new THREE.TextureLoader().load("img/skybox/front.png"),
+            side: THREE.DoubleSide
+          }),
+          new THREE.MeshBasicMaterial({
+            map: new THREE.TextureLoader().load("img/skybox/back.png"),
+            side: THREE.DoubleSide
+          }),
+          new THREE.MeshBasicMaterial({
+            map: new THREE.TextureLoader().load("img/skybox/up.png"),
+            side: THREE.DoubleSide
+          }),
+          new THREE.MeshBasicMaterial({
+            map: new THREE.TextureLoader().load("img/skybox/down.png"),
+            side: THREE.DoubleSide
+          }),
+          new THREE.MeshBasicMaterial({
+            map: new THREE.TextureLoader().load("img/skybox/right.png"),
+            side: THREE.DoubleSide
+          }),
+          new THREE.MeshBasicMaterial({
+            map: new THREE.TextureLoader().load("img/skybox/left.png"),
+            side: THREE.DoubleSide
+          })
+        ];
+
         var skybox = new THREE.Mesh(skyboxGeo, skyboxMats);
         scene.add(skybox);
-        
-        
+
         //Build for the sun
         var sunGeometry = new THREE.SphereGeometry(0.8, 32, 32);
-        var material = new THREE.MeshPhongMaterial({color: 0xFFFF00, wireframe: false});
+        var material = new THREE.MeshPhongMaterial({
+          color: 0xffff00,
+          wireframe: false
+        });
 
         //Center of the app
         var sun = new THREE.Mesh(sunGeometry, material);
@@ -244,103 +273,114 @@
 
         var light = new THREE.AmbientLight(0xffffff, 1.75);
         scene.add(light);
-      
+
         camera.position.z = 10;
       }
-      
-      function update(){
+
+      function update() {
         //use loading manager
-        if (ringObj != undefined){
-        ringObj.rotateY(0.0174533);
-        githubObj.rotateY(0.025);
-        linkedinObj.rotateY(0.025);
-        projectsObj.rotateY(0.025);
+        if (ringObj != undefined) {
+          ringObj.rotateY(0.0174533);
+          githubObj.rotateY(0.025);
+          linkedinObj.rotateY(0.025);
+          projectsObj.rotateY(0.025);
         }
-        if(isTweening){
+        if (isTweening) {
           TWEEN.update();
         }
-      };
-      
-      function render(){
+      }
+
+      function render() {
         renderer.render(scene, camera);
         labelRenderer.render(scene, camera);
-      };
-      
+      }
+
       function loop() {
         requestAnimationFrame(loop);
         update();
         render();
       }
 
-      function onMouseClick(event) {
+      function selectObject(event) {
         event.preventDefault();
-        
+
         if (!controls.enabled) return;
-        
+
         var raycaster = new THREE.Raycaster();
         var vector = new THREE.Vector3();
-        
-        vector.set((event.layerX/window.innerWidth) * 2 - 1,
-                   -(event.layerY/window.innerHeight) * 2 + 1,
-                    0);
-        
+
+        vector.set(
+          (event.layerX / window.innerWidth) * 2 - 1,
+          -(event.layerY / window.innerHeight) * 2 + 1,
+          0
+        );
+
         raycaster.setFromCamera(vector, camera);
-        
+
         var intersects = raycaster.intersectObjects(objArray, true);
-        if (intersects.length > 0){
+        if (intersects.length > 0) {
           lookAtObject(intersects[0].object.parent);
         }
       }
-      
-      function lookAtObject(obj){
+
+      function lookAtObject(obj) {
         controls.enabled = false;
-        lastPos = new THREE.Vector3(camera.position.x, camera.position.y, camera.position.z - 3);
+        lastPos = new THREE.Vector3(
+          camera.position.x,
+          camera.position.y,
+          camera.position.z - 3
+        );
         lastObj = obj;
-        switch(obj){
+        switch (obj) {
           case githubObj:
-            githubText.style.visibility = 'visible';
-            document.getElementById('info').innerHTML = "Github Portfolio";
+            githubText.style.visibility = "visible";
+            document.getElementById("info").innerHTML = "Github Portfolio";
             break;
           case linkedinObj:
-            linkedinText.style.visibility = 'visible';
-            document.getElementById('info').innerHTML = "LinkedIn Profile";
+            linkedinText.style.visibility = "visible";
+            document.getElementById("info").innerHTML = "LinkedIn Profile";
             break;
           case projectsObj:
-            projectsText.style.visibility = 'visible';
-            document.getElementById('info').innerHTML = "Projects Page";
+            projectsText.style.visibility = "visible";
+            document.getElementById("info").innerHTML = "Projects Page";
         }
         doTween(obj.position, false);
-        document.getElementById('back').style.visibility = 'visible';
+        document.getElementById("back").style.visibility = "visible";
       }
-      
-      function goBack(){
-        document.getElementById('back').style.visibility = 'hidden';
-        document.getElementById('info').innerHTML = 'Welcome to my website. To get started, click on an icon to visit its page.';
-        githubText.style.visibility = 'hidden';
-        linkedinText.style.visibility = 'hidden';
-        projectsText.style.visibility = 'hidden';
+
+      function goBack() {
+        document.getElementById("back").style.visibility = "hidden";
+        document.getElementById("info").innerHTML =
+          "Welcome to my website. To get started, click on an icon to visit its page.";
+        githubText.style.visibility = "hidden";
+        linkedinText.style.visibility = "hidden";
+        projectsText.style.visibility = "hidden";
         doTween(lastPos, true);
       }
-      
-      function doTween(pos, control){
-        var position = {x: camera.position.x, y: camera.position.y, z: camera.position.z};
-        var target = {x: pos.x, y: pos.y, z: pos.z + 3};
-        tween = new TWEEN.Tween(position).to(target, 1000);;
-        tween.onUpdate(function(){
+
+      function doTween(pos, control) {
+        var position = {
+          x: camera.position.x,
+          y: camera.position.y,
+          z: camera.position.z
+        };
+        var target = { x: pos.x, y: pos.y, z: pos.z + 3 };
+        tween = new TWEEN.Tween(position).to(target, 1000);
+        tween.onUpdate(function() {
           camera.position.x = position.x;
           camera.position.y = position.y;
           camera.position.z = position.z;
           camera.lookAt(lastObj.position);
         });
-        tween.onComplete(function(){
+        tween.onComplete(function() {
           isTweening = false;
           controls.enabled = control;
-          if (control) camera.lookAt(new THREE.Vector3(0,0,0));
+          if (control) camera.lookAt(new THREE.Vector3(0, 0, 0));
         });
         isTweening = true;
         tween.start();
       }
-      
+
       loop();
     </script>
   </body>
