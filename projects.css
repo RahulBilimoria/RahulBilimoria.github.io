@@ -1,14 +1,52 @@
-.nav, .pagination, .carousel, .panel-title a { 
-  cursor: pointer; 
+.nav,
+.pagination,
+.carousel,
+.panel-title a {
+  cursor: pointer;
 }
 
 .text-bubble {
-  color: #FFFFFF;
-  background: #659DBD;
+  color: #ffffff;
+  background: #659dbd;
 }
 
 .text-bubble-inverted {
-  color: #5A5A5A;
-  background: #FFFFFF;
+  color: #5a5a5a;
+  background: #ffffff;
+}
 
+.text-hover {
+  position: absolute;
+  text-align: center;
+  font-size: xx-large;
+  /* background-color: rgb(0, 0, 0, 0.85); */
+  border-radius: 5px;
+  padding: 10px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: 0.5s;
+  opacity: 0;
+}
+
+.image {
+  position: relative;
+  text-align: center;
+  color: white;
+  transition: 0.5s;
+  opacity: 1;
+  width: 525px;
+  height: 250px;
+}
+
+.project-holder:hover .image {
+  opacity: 0.3;
+}
+
+.project-holder:hover .text-hover {
+  opacity: 1;
+}
+
+.project-holder a {
+  color: black;
 }

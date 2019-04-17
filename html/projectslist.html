@@ -1,0 +1,34 @@
+<div class="container">
+  <h1 class="my-4">
+    Projects
+    <small id="subtitle">> All Projects</small>
+  </h1>
+  <!-- Project loop -->
+  <main>
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a class="nav-link" ng-class='{active: show==="all"}' data-toggle="tab" href="" ng-click="showList('all')">All</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" ng-class='{active: show==="game"}' data-toggle="tab" href="" ng-click="showList('game')">Games</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" ng-class='{active: show==="vr"}' data-toggle="tab" href="" ng-click="showList('vr')">Virtual Reality</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" ng-class='{active: show==="webdev"}' data-toggle="tab" href="" ng-click="showList('webdev')">Web Development</a>
+      </li>
+    </ul>
+    <p></p>
+    <span class="ng-cloak" id="List" ng-repeat="x in projects" ng-if="show === 'all' || x.tags.includes(show)">
+      <div class="col-md-6 project-holder">
+        <a ng-href="{{ x.link }}" ng-click="loadProject(x.id)">
+          <img class="img-fluid rounded image" ng-src="{{ x.img }}" alt="" />
+          <div class="text-hover">
+            {{ x.name }}
+          </div>
+        </a>
+      </div>
+    </span>
+  </main>
+</div>

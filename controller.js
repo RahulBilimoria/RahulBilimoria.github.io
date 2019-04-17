@@ -3,7 +3,8 @@ var app = angular.module("projects", ["ngRoute", "ngAnimate", "ui.bootstrap"]);
 app.config(function($routeProvider) {
   $routeProvider
     .when("/", {
-      templateUrl: "projects2.html"
+      //templateUrl: "projects2.html"
+      templateUrl: "html/projectslist.html"
     })
     .when("/flappyjump", {
       templateUrl: "html/flappyjump.html"
@@ -45,6 +46,22 @@ app.controller("projectsController", [
 
     $scope.showList = function(value) {
       $scope.show = value;
+      var s = "> ";
+      switch (value) {
+        case "vr":
+          s += "Virtual Reality";
+          break;
+        case "game":
+          s += "Game Development";
+          break;
+        case "webdev":
+          s += "Web Development";
+          break;
+        default:
+          s += "All Projects";
+          break;
+      }
+      document.getElementById("subtitle").innerHTML = s;
     };
 
     $scope.getIcon = function(value) {
