@@ -39,6 +39,11 @@
   height: 250px;
 }
 
+.project-holder {
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+
 .project-holder:hover .image {
   opacity: 0.3;
 }
@@ -49,4 +54,12 @@
 
 .project-holder a {
   color: black;
+}
+
+.iconPanel {
+  background-color: white;
+}
+
+.infoPanel {
+  background-color: #4286f4;
 }

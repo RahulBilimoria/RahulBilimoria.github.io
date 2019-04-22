@@ -89,12 +89,7 @@
 
       function init() {
         scene = new THREE.Scene();
-        camera = new THREE.PerspectiveCamera(
-          75,
-          window.innerWidth / window.innerHeight,
-          0.1,
-          10000
-        );
+        camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 10000);
         renderer = new THREE.WebGLRenderer({ antialias: true });
 
         renderer.setSize(window.innerWidth, window.innerHeight);
@@ -216,7 +211,7 @@
             a.appendChild(document.createTextNode("Visit Page"));
             a.className = "linkButton";
             a.title = "List of Projects";
-            a.href = "http://rahulbilimoria.me/projects.html";
+            a.href = "http://rahulbilimoria.me/projects";
             projectsText.appendChild(a);
             projectsText.style.marginTop = "-1em";
             projectsText.style.visibility = "hidden";
@@ -302,18 +297,14 @@
       }
 
       function selectObject(event) {
-        event.preventDefault();
+        //event.preventDefault();
 
         if (!controls.enabled) return;
 
         var raycaster = new THREE.Raycaster();
         var vector = new THREE.Vector3();
 
-        vector.set(
-          (event.layerX / window.innerWidth) * 2 - 1,
-          -(event.layerY / window.innerHeight) * 2 + 1,
-          0
-        );
+        vector.set((event.layerX / window.innerWidth) * 2 - 1, -(event.layerY / window.innerHeight) * 2 + 1, 0);
 
         raycaster.setFromCamera(vector, camera);
 
@@ -325,11 +316,7 @@
 
       function lookAtObject(obj) {
         controls.enabled = false;
-        lastPos = new THREE.Vector3(
-          camera.position.x,
-          camera.position.y,
-          camera.position.z - 3
-        );
+        lastPos = new THREE.Vector3(camera.position.x, camera.position.y, camera.position.z - 3);
         lastObj = obj;
         switch (obj) {
           case githubObj:
@@ -350,8 +337,7 @@
 
       function goBack() {
         document.getElementById("back").style.visibility = "hidden";
-        document.getElementById("info").innerHTML =
-          "Welcome to my website. To get started, click on an icon to visit its page.";
+        document.getElementById("info").innerHTML = "Welcome to my website. To get started, click on an icon to visit its page.";
         githubText.style.visibility = "hidden";
         linkedinText.style.visibility = "hidden";
         projectsText.style.visibility = "hidden";
