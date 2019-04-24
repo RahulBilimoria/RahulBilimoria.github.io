@@ -11,15 +11,16 @@ app.config(function($routeProvider) {
       /* use :projectName instead */
     })
     .otherwise({
-      templateUrl: "project.html"
+      templateUrl: "html/projectpage.html"
     });
 });
 
 app.controller("projectsController", [
   "$scope",
   "$http",
+  "$route",
 
-  function($scope, $http, $location) {
+  function($scope, $http, $route) {
     $scope.show = "all";
     $scope.projectInfo = null;
     $scope.active = 0;
@@ -32,7 +33,6 @@ app.controller("projectsController", [
         if ($scope.projects[i].link.indexOf(url) > 0) {
           $scope.projectInfo = $scope.projects[i];
           $scope.slideshow = $scope.projectInfo.project.slideshow;
-          window.scrollTo(0, 0);
           break;
         }
       }
@@ -41,7 +41,7 @@ app.controller("projectsController", [
     $scope.loadProject = function(id) {
       $scope.projectInfo = $scope.projects[id];
       $scope.slideshow = $scope.projectInfo.project.slideshow;
-      window.scrollTo(0, 0);
+      window.scrollTo(0, document.getElementById("i").scrollHeight);
     };
 
     $scope.showList = function(value) {
@@ -66,10 +66,49 @@ app.controller("projectsController", [
 
     $scope.getIcon = function(value) {
       if (value === "C#") value = "CSharp";
-      if (value === "HTC Vive") value = "htcvive";
+      if (value === "HTC Vive") value = "htcvive2";
       if (value === "Open Weather Map API") value = "openweathermap";
       if (value === "Visual Studio") value = "visualstudio";
       return "./icon/" + value + ".png";
+    };
+
+    $scope.getIconDescription = function(value) {
+      switch (value) {
+        case "Unity":
+          return "A cross-platform real-time game engine developed by Unity Technologies.";
+        case "SteamVR":
+          return "An API and SDK developed by Valve to support VR devices.";
+        case "HTC Vive":
+          return "A VR Headset created by HTC and Valve.";
+        case "C#":
+          return "A multi-purpose object oriented programming language by Microsoft.";
+        case "Java":
+          return "A class-based object oriented programming language by Oracle.";
+        case "Netbeans":
+          return "An IDE written in Java for Java by Oracle.";
+        case "Bulbapedia":
+          return "An encyclopedia about all things Pokemon.";
+        case "C++":
+          return "A powerful programming language that provides high and low level features";
+        case "OpenGL":
+          return "A cross-platform API for rendering 2D and 3D graphics.";
+        case "Visual Studio":
+          return "An IDE written in C++ and C# by Microsoft.";
+        case "HTML":
+          return "A standard markup language for creating websites.";
+        case "CSS":
+          return "A style sheet language used to alter a websites appearance.";
+        case "Bootstrap":
+          return "A CSS framework for responsive mobile-first front-end web development.";
+        case "AngularJS":
+          return "A front-end framework for developing single-page applications.";
+        case "Javascript":
+          return "A high-level scripting language for websites.";
+        case "Open Weather Map API":
+          return "An API that holds weather data from around the globe.";
+        default:
+          return "NULL";
+      }
     };
   }
 ]);

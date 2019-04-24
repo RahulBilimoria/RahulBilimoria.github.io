@@ -27,6 +27,7 @@
   transform: translate(-50%, -50%);
   transition: 0.5s;
   opacity: 0;
+  color: black;
 }
 
 .image {
@@ -37,6 +38,11 @@
   opacity: 1;
   width: 525px;
   height: 250px;
+}
+
+.img-icon {
+  width: 75px;
+  height: 75px;
 }
 
 .project-holder {
@@ -62,4 +68,23 @@
 
 .infoPanel {
   background-color: #4286f4;
+}
+
+.masthead2 {
+  min-height: 100vh;
+  position: relative;
+  display: table;
+  width: 100%;
+  height: auto;
+  padding-top: 8rem;
+  padding-bottom: 8rem;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.masthead2 h1 {
+  font-size: 4.5em;
+  font-weight: 700;
+  color: white;
 }
