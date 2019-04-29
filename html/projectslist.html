@@ -21,9 +21,9 @@
     </ul>
     <p></p>
     <span class="ng-cloak" id="List" ng-repeat="x in projects" ng-if="show === 'all' || x.tags.includes(show)">
-      <div class="col-md-6 project-holder">
+      <div class="col-lg-6 col-md-10 col-sm-12 project-holder">
         <a ng-href="{{ x.link }}" ng-click="loadProject(x.id)">
-          <img class="img-fluid rounded image" ng-src="{{ x.img }}" alt="" />
+          <img class="image" ng-src="{{ x.img }}" alt="" />
           <div class="text-hover">
             {{ x.name }}
           </div>

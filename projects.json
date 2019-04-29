@@ -19,9 +19,7 @@
       "development": "This game was developed in Unity for the HTC Vive. It uses the SteamVR platform and scripts written in C#",
       "tools": ["Unity", "SteamVR", "HTC Vive", "C#"],
       "github": ["https://github.com/RahulBilimoria/EscapeRoom"],
-      "website": null,
-      "textcolor": "#FFFFFF",
-      "backgroundcolor": "#009fd4"
+      "website": null
     }
   },
   {
@@ -35,7 +33,7 @@
     "project": {
       "coverimg": "./img/pokemon-rpg-3.png",
       "title": "Gotta Catch 'Em All!",
-      "color": "#1f1f1f",
+      "color": "white",
       "subtitle": "A single player pokemon experience with an unforgiving difficulty",
       "slideshow": ["pkmn/route3.png", "pkmn/level.png", "pkmn/route1.png", "pkmn/route2.png"],
       "video": null,
@@ -44,9 +42,7 @@
       "development": "This game was developed in Java with the Netbeans IDE. It is currently still under development.",
       "tools": ["Java", "Netbeans", "Bulbapedia"],
       "github": ["https://github.com/RahulBilimoria/PokeGame"],
-      "website": null,
-      "textcolor": "#FFFFFF",
-      "backgroundcolor": "#10866b"
+      "website": null
     }
   },
   {
@@ -60,7 +56,7 @@
     "project": {
       "coverimg": "./img/submarine.jpg",
       "title": "I Love The Smell Of Submarines In The Morning",
-      "color": "#fff",
+      "color": "white",
       "subtitle": "A simple arcade game utilizing the features of OpenGL",
       "slideshow": ["submarine/1.png", "submarine/2.png", "submarine/3.png"],
       "description": "A c++ game built to test the libraries and features of the OpenGL Library. The user controls a submarine and can fight with AI controlled enemies. The submarine was build using OpenGL primitives with basic input handling to move the player, the terrain was made using the gaussian formula to create hills and all the submarines are texture mapped. The game uses hitbox detection to check whether the torpedo collides with an enemy.",
@@ -72,9 +68,7 @@
         "https://github.com/RahulBilimoria/CPS511-Assignment-2",
         "https://github.com/RahulBilimoria/CPS511-Assignment-3"
       ],
-      "website": null,
-      "textcolor": "",
-      "backgroundcolor": ""
+      "website": null
     }
   },
   {
@@ -96,9 +90,7 @@
       "development": "This lab was developed in Unity for the HTC Vive. It uses the SteamVR platform and scripts written in C#",
       "tools": ["Unity", "SteamVR", "HTC Vive", "C#"],
       "github": ["https://github.com/RahulBilimoria/TavernVR"],
-      "website": null,
-      "textcolor": "",
-      "backgroundcolor": ""
+      "website": null
     }
   },
   {
@@ -120,9 +112,7 @@
       "development": "This lab was developed in Unity for the HTC Vive. It uses the SteamVR platform and scripts written in C#",
       "tools": ["Unity", "SteamVR", "HTC Vive", "C#"],
       "github": ["https://github.com/RahulBilimoria/VRLab04"],
-      "website": null,
-      "textcolor": "",
-      "backgroundcolor": ""
+      "website": null
     }
   },
   {
@@ -144,9 +134,7 @@
       "development": "This webapp was developed for a Web Development course over the span of 2 weeks.",
       "tools": ["HTML", "CSS", "Bootstrap", "AngularJS"],
       "github": ["https://github.com/RahulBilimoria/TasksList"],
-      "website": "./DemoWebsites/task.html",
-      "textcolor": "",
-      "backgroundcolor": ""
+      "website": "./DemoWebsites/task.html"
     }
   },
   {
@@ -168,9 +156,29 @@
       "development": "This webapp was developed for a Web Development course over the span of 2 weeks.",
       "tools": ["HTML", "CSS", "Javascript", "Open Weather Map API", "Bootstrap"],
       "github": ["https://github.com/RahulBilimoria/WeatherForecast"],
-      "website": "./DemoWebsites/weather.html",
-      "textcolor": "",
-      "backgroundcolor": ""
+      "website": "./DemoWebsites/weather.html"
+    }
+  },
+  {
+    "id": 7,
+    "name": "Flappyjump",
+    "description": "A 2D vertical scrolling platformer",
+    "tags": ["game"],
+    "img": "./img/flappyjump.png",
+    "link": "#!flappyjump",
+    "lang": "C#",
+    "project": {
+      "coverimg": "./img/flappyjump/background.png",
+      "title": "Jump Around",
+      "color": "white",
+      "subtitle": "A simple vertical scroller built with Unity's 2D game engine",
+      "slideshow": ["flappyjump/menu.png", "flappyjump/game.png", "flappyjump/gameover.png", "flappyjump/upgrades.png"],
+      "description": "Flappyjump is a 2D platforming game in which the platforms are constantly moving below you. Your goal is to try and survive as long as possible and use the currency you collect to upgrade your player and improve on your high score.",
+      "features": ["Unity", "C#"],
+      "development": "",
+      "tools": ["Unity", "C#"],
+      "github": ["https://github.com/RahulBilimoria/FlappyJump"],
+      "website": "./DemoWebsites/Flappyjump/game.html"
     }
   }
 ]

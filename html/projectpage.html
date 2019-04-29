@@ -1,9 +1,9 @@
 <div>
   <!-- Header -->
   <header class="masthead2 d-flex" ng-Style="{'background-image': 'url(' + projectInfo.project.coverimg + ')'}">
-    <div class="container text-center my-auto">
-      <h1 class="mb-1" ng-style="{'color': projectInfo.project.color}" ng-bind="projectInfo.name"></h1>
-      <h3 class="mb-5" ng-style="{'color': projectInfo.project.color}" style="font-weight: 500">
+    <div class="container text-center my-auto" ng-style="{'color': projectInfo.project.color}">
+      <h1 class="mb-1" ng-bind="projectInfo.name"></h1>
+      <h3 class="mb-5">
         <em ng-bind="projectInfo.project.subtitle"></em>
       </h3>
     </div>
@@ -49,7 +49,7 @@
         <h2 class="mb-5">Screenshots</h2>
       </div>
       <div class="row no-gutters">
-        <div class="col-lg-6" ng-repeat="x in slideshow">
+        <div ng-class="getClass()" ng-repeat="x in slideshow">
           <a class="portfolio-item">
             <img class="img-fluid" style="transition: 0.35s;" src="./img/{{ x }}" alt="" />
           </a>
@@ -72,7 +72,7 @@
         <a class="btn btn-xl btn-light mr-4" ng-href="{{ projectInfo.project.video }}">Video</a>
       </span>
       <span ng-if="projectInfo.project.website != null">
-        <a class="btn btn-xl btn-light mr-4" ng-href="{{ projectInfo.project.website }}">Website</a>
+        <a class="btn btn-xl btn-light mr-4" ng-href="{{ projectInfo.project.website }}">Demo</a>
       </span>
       <!--<a href="#" class="btn btn-xl btn-dark">Look at Me!</a>-->
     </div>

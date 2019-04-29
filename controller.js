@@ -6,10 +6,6 @@ app.config(function($routeProvider) {
       //templateUrl: "projects2.html"
       templateUrl: "html/projectslist.html"
     })
-    .when("/flappyjump", {
-      templateUrl: "html/flappyjump.html"
-      /* use :projectName instead */
-    })
     .otherwise({
       templateUrl: "html/projectpage.html"
     });
@@ -109,6 +105,11 @@ app.controller("projectsController", [
         default:
           return "NULL";
       }
+    };
+
+    $scope.getClass = function(value) {
+      if ($scope.projectInfo.id == 7) return "col-lg-3";
+      return "col-lg-6";
     };
   }
 ]);
