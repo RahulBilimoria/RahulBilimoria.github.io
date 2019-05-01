@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>ThreeJS Intro Page Demo</title>
+    <title>Rahul Bilimoria</title>
     <style>
       body {
         text-align: center;
@@ -52,7 +52,7 @@
   </head>
   <body>
     <div id="info">
-      Welcome to my website. To get started, click on an icon to visit its page.
+      To get started, click on an icon to visit its page.
     </div>
     <div id="back">
       Back
@@ -70,19 +70,25 @@
       var labelRenderer;
       var controls;
 
-      var ringObj;
-      var githubObj;
-      var githubText;
-      var linkedinObj;
-      var linkedinText;
-      var projectsObj;
-      var projectsText;
-      var objArray = [];
+      var selectedObject;
+      var selectedIcon;
+      var visitPageObj;
 
-      var tween;
-      var isTweening;
-      var lastPos;
-      var lastObj;
+      var ringObj;
+
+      var githubObj;
+      var githubParent;
+      var githubRing;
+
+      var linkedinObj;
+      var linkedinParent;
+      var linkedinRing;
+
+      var projectsObj;
+      var projectsParent;
+      var projectsRing;
+
+      var objArray = [];
 
       init();
       loadScene();
@@ -109,14 +115,20 @@
         window.addEventListener("click", selectObject, false);
         //window.addEventListener("mouseup", selectObject, false);
         controls = new THREE.OrbitControls(camera, labelRenderer.domElement);
-
-        isTweening = false;
       }
 
       function loadScene() {
         var manager = new THREE.LoadingManager();
         var mtlLoader = new THREE.MTLLoader();
         var maxAnisotropy = renderer.capabilities.getMaxAnisotropy();
+
+        var geometry = new THREE.CylinderGeometry(0.001, 0.125 * 3, 0.25 * 3, 4);
+        var material = new THREE.MeshBasicMaterial({ color: 0xff0000 });
+        selectedIcon = new THREE.Mesh(geometry, material);
+        selectedIcon.position.set(0, 5, 0);
+        selectedIcon.rotation.x = THREE.Math.degToRad(180);
+        selectedIcon.visible = false;
+        this.scene.add(selectedIcon);
 
         manager.onStart = function(url, itemsLoaded, itemsTotal) {
           console.log("Started loading: " + url + ".");
@@ -138,88 +150,76 @@
           objLoader.load("models/name.obj", function(object) {
             ringObj = object;
             ringObj.position.set(0, 0, 0);
+
+            visitPageObj = document.createElement("div");
+            visitPageObj.className = "label";
+            var a = document.createElement("a");
+            a.appendChild(document.createTextNode("Visit Page"));
+            a.className = "linkButton";
+            a.title = "Rahul Bilimoria";
+            a.href = "https://github.com/RahulBilimoria";
+            visitPageObj.appendChild(a);
+            visitPageObj.style.marginTop = "-1em";
+            visitPageObj.style.visibility = "hidden";
+            var linkLabel = new THREE.CSS2DObject(visitPageObj);
+            linkLabel.position.set(0, 1.2, 0);
+
+            ringObj.add(linkLabel);
             scene.add(object);
           });
         });
 
         mtlLoader.load("models/github.mtl", function(mats) {
           mats.preload();
+          githubRing = createRing(5);
+          githubParent = new THREE.Object3D();
+
           var objLoader = new THREE.OBJLoader(manager);
           objLoader.setMaterials(mats);
           objLoader.load("models/github.obj", function(object) {
             githubObj = object;
-            githubObj.position.set(6, 5, 4);
+            githubObj.position.set(5, 0, 0);
             objArray.push(githubObj);
+            githubParent.add(githubObj);
 
-            githubText = document.createElement("div");
-            githubText.className = "label";
-            var a = document.createElement("a");
-            a.appendChild(document.createTextNode("Visit Page"));
-            a.className = "linkButton";
-            a.title = "Github Portfolio";
-            a.href = "https://github.com/RahulBilimoria";
-            githubText.appendChild(a);
-            githubText.style.marginTop = "-1em";
-            githubText.style.visibility = "hidden";
-            var githubLabel = new THREE.CSS2DObject(githubText);
-            githubLabel.position.set(0, 1.2, 0);
-            githubObj.add(githubLabel);
-
-            scene.add(object);
+            scene.add(githubRing); //could use githubring as the parent instead of empty object class
+            scene.add(githubParent);
           });
         });
 
         mtlLoader.load("models/linkedin.mtl", function(mats) {
           mats.preload();
+          linkedinRing = createRing(15);
+          linkedinParent = new THREE.Object3D();
+
           var objLoader = new THREE.OBJLoader(manager);
           objLoader.setMaterials(mats);
           objLoader.load("models/linkedin.obj", function(object) {
             linkedinObj = object;
-            linkedinObj.position.set(-8, -4, 1);
+            linkedinObj.position.set(15, 0, 0);
             objArray.push(linkedinObj);
+            linkedinParent.add(linkedinObj);
 
-            linkedinText = document.createElement("div");
-            linkedinText.className = "label";
-            var a = document.createElement("a");
-            a.appendChild(document.createTextNode("Visit Page"));
-            a.className = "linkButton";
-            a.title = "LinkedIn Page";
-            a.href = "https://www.linkedin.com/in/rahul-bilimoria/";
-            linkedinText.appendChild(a);
-            linkedinText.style.marginTop = "-1em";
-            linkedinText.style.visibility = "hidden";
-            var linkedinLabel = new THREE.CSS2DObject(linkedinText);
-            linkedinLabel.position.set(0, 1.2, 0);
-            linkedinObj.add(linkedinLabel);
-
-            scene.add(object);
+            scene.add(linkedinRing);
+            scene.add(linkedinParent);
           });
         });
 
         mtlLoader.load("models/projects.mtl", function(mats) {
           mats.preload();
+          projectsRing = createRing(25);
+          projectsParent = new THREE.Object3D();
+
           var objLoader = new THREE.OBJLoader(manager);
           objLoader.setMaterials(mats);
           objLoader.load("models/projects.obj", function(object) {
             projectsObj = object;
-            projectsObj.position.set(-6, 2, -10);
+            projectsObj.position.set(25, 0, 0);
             objArray.push(projectsObj);
+            projectsParent.add(projectsObj);
 
-            projectsText = document.createElement("div");
-            projectsText.className = "label";
-            var a = document.createElement("a");
-            a.appendChild(document.createTextNode("Visit Page"));
-            a.className = "linkButton";
-            a.title = "List of Projects";
-            a.href = "http://rahulbilimoria.me/projects";
-            projectsText.appendChild(a);
-            projectsText.style.marginTop = "-1em";
-            projectsText.style.visibility = "hidden";
-            var projectsLabel = new THREE.CSS2DObject(projectsText);
-            projectsLabel.position.set(0, 1.2, 0);
-            projectsObj.add(projectsLabel);
-
-            scene.add(object);
+            scene.add(projectsRing);
+            scene.add(projectsParent);
           });
         });
 
@@ -269,19 +269,24 @@
         var light = new THREE.AmbientLight(0xffffff, 1.75);
         scene.add(light);
 
-        camera.position.z = 10;
+        camera.position.z = 20;
+        camera.position.y = 5;
+        camera.lookAt(new THREE.Vector3(0, 0, 0));
       }
 
       function update() {
         //use loading manager
-        if (ringObj != undefined) {
+        if (ringObj != undefined && githubObj != undefined && linkedinObj != undefined && projectsObj != undefined) {
           ringObj.rotateY(0.0174533);
-          githubObj.rotateY(0.025);
+          githubObj.rotateY(0.05);
           linkedinObj.rotateY(0.025);
-          projectsObj.rotateY(0.025);
+          projectsObj.rotateY(0.0125);
+          githubParent.rotateY(0.02);
+          linkedinParent.rotateY(0.01);
+          projectsParent.rotateY(0.005);
         }
-        if (isTweening) {
-          TWEEN.update();
+        if (selectedIcon.visible) {
+          selectedIcon.rotateY(0.25);
         }
       }
 
@@ -297,74 +302,67 @@
       }
 
       function selectObject(event) {
-        //event.preventDefault();
-
-        if (!controls.enabled) return;
-
         var raycaster = new THREE.Raycaster();
         var vector = new THREE.Vector3();
-
         vector.set((event.layerX / window.innerWidth) * 2 - 1, -(event.layerY / window.innerHeight) * 2 + 1, 0);
-
         raycaster.setFromCamera(vector, camera);
 
         var intersects = raycaster.intersectObjects(objArray, true);
         if (intersects.length > 0) {
-          lookAtObject(intersects[0].object.parent);
+          selectedObject = intersects[0].object.parent;
+
+          var bbox = new THREE.Box3();
+          bbox.setFromObject(selectedObject);
+          selectedIcon.position.set(selectedObject.position.x, selectedObject.position.y + (bbox.max.y - bbox.min.y) / 2 + 1, selectedObject.position.z);
+          selectedObject.parent.add(selectedIcon);
+          selectedIcon.visible = true;
+
+          showSelectedUI(selectedObject);
         }
       }
 
-      function lookAtObject(obj) {
-        controls.enabled = false;
-        lastPos = new THREE.Vector3(camera.position.x, camera.position.y, camera.position.z - 3);
-        lastObj = obj;
+      function showSelectedUI(obj) {
+        githubRing.material.color.setHex(0xffffff);
+        linkedinRing.material.color.setHex(0xffffff);
+        projectsRing.material.color.setHex(0xffffff);
         switch (obj) {
           case githubObj:
-            githubText.style.visibility = "visible";
+            visitPageObj.firstChild.href = "https://github.com/RahulBilimoria";
             document.getElementById("info").innerHTML = "Github Portfolio";
+            githubRing.material.color.setHex(0xffff00);
             break;
           case linkedinObj:
-            linkedinText.style.visibility = "visible";
+            visitPageObj.firstChild.href = "https://www.linkedin.com/in/rahul-bilimoria/";
             document.getElementById("info").innerHTML = "LinkedIn Profile";
+            linkedinRing.material.color.setHex(0xffff00);
             break;
           case projectsObj:
-            projectsText.style.visibility = "visible";
+            visitPageObj.firstChild.href = "http://rahulbilimoria.me/projects";
             document.getElementById("info").innerHTML = "Projects Page";
+            projectsRing.material.color.setHex(0xffff00);
         }
-        doTween(obj.position, false);
+        visitPageObj.style.visibility = "visible";
         document.getElementById("back").style.visibility = "visible";
       }
 
       function goBack() {
         document.getElementById("back").style.visibility = "hidden";
-        document.getElementById("info").innerHTML = "Welcome to my website. To get started, click on an icon to visit its page.";
-        githubText.style.visibility = "hidden";
-        linkedinText.style.visibility = "hidden";
-        projectsText.style.visibility = "hidden";
-        doTween(lastPos, true);
+        document.getElementById("info").innerHTML = "To get started, click on an icon to visit its page.";
+        githubRing.material.color.setHex(0xffffff);
+        linkedinRing.material.color.setHex(0xffffff);
+        projectsRing.material.color.setHex(0xffffff);
+        visitPageObj.style.visibility = "hidden";
+        selectedObject = null;
+        selectedIcon.visible = false;
       }
 
-      function doTween(pos, control) {
-        var position = {
-          x: camera.position.x,
-          y: camera.position.y,
-          z: camera.position.z
-        };
-        var target = { x: pos.x, y: pos.y, z: pos.z + 3 };
-        tween = new TWEEN.Tween(position).to(target, 1000);
-        tween.onUpdate(function() {
-          camera.position.x = position.x;
-          camera.position.y = position.y;
-          camera.position.z = position.z;
-          camera.lookAt(lastObj.position);
-        });
-        tween.onComplete(function() {
-          isTweening = false;
-          controls.enabled = control;
-          if (control) camera.lookAt(new THREE.Vector3(0, 0, 0));
-        });
-        isTweening = true;
-        tween.start();
+      function createRing(radius) {
+        var geo = new THREE.CircleGeometry(radius, 64);
+        geo.vertices.shift();
+        var mat = new THREE.LineBasicMaterial({ color: 0xffffff, opacity: 0.25, transparent: true });
+        var ring = new THREE.LineLoop(geo, mat);
+        ring.rotation.x = THREE.Math.degToRad(90);
+        return ring;
       }
 
       loop();

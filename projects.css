@@ -5,6 +5,22 @@
   cursor: pointer;
 }
 
+.back {
+  background-image: url("./img/bg.jpg");
+  background-repeat: repeat;
+}
+
+.title {
+  font-size: 48px;
+}
+
+.thumbnail {
+  width: 100%;
+  margin: auto;
+  text-align: center;
+  border-radius: 50%;
+}
+
 .text-hover {
   position: absolute;
   text-align: center;
