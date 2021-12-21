@@ -180,5 +180,27 @@
       "github": ["https://github.com/RahulBilimoria/FlappyJump"],
       "website": "./DemoWebsites/Flappyjump/game.html"
     }
+  },
+  {
+    "id": 8,
+    "name": "Bounce",
+    "description": "A keep-em-up game with increasing difficulty",
+    "tags": ["game"],
+    "img": "./img/bounce.png",
+    "link": "#!bounce",
+    "lang": "C#",
+    "project": {
+      "coverimg": "./img/bounce/background.png",
+      "title": "What Goes Up Must Come Down",
+      "color": "white",
+      "subtitle": "A keep-em-up game built with Unity's 2D game engine",
+      "slideshow": ["bounce/pic1.png", "bounce/pic2.png", "bounce/pic3.png"],
+      "description": "Bounce is a 2D keep-em-up game in which you must keep the weapons on your screen for as long as possible. Your goal is to try and survive as long as possible while obtaining the most points. Use these points to get upgrades and reach even larger high scores.",
+      "features": ["Unity", "C#"],
+      "development": "",
+      "tools": ["Unity", "C#"],
+      "github": ["https://github.com/RahulBilimoria/Bounce"],
+      "website": "https://play.google.com/store/apps/details?id=com.RahulBilimoria.Bounce"
+    }
   }
 ]

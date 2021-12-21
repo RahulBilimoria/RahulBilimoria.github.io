@@ -108,13 +108,16 @@
         document.body.appendChild(labelRenderer.domElement);
 
         //back button
+        document.getElementById("back").addEventListener("touchstart", goBack);
         document.getElementById("back").addEventListener("click", goBack);
         document.getElementById("back").style.visibility = "hidden";
 
         //gets object of whatever was clicked
+        window.addEventListener("touchstart", selectObject, false);
         window.addEventListener("click", selectObject, false);
         //window.addEventListener("mouseup", selectObject, false);
         controls = new THREE.OrbitControls(camera, labelRenderer.domElement);
+        //controls.enablePan = false;
       }
 
       function loadScene() {
@@ -278,12 +281,12 @@
         //use loading manager
         if (ringObj != undefined && githubObj != undefined && linkedinObj != undefined && projectsObj != undefined) {
           ringObj.rotateY(0.0174533);
-          githubObj.rotateY(0.05);
-          linkedinObj.rotateY(0.025);
-          projectsObj.rotateY(0.0125);
-          githubParent.rotateY(0.02);
-          linkedinParent.rotateY(0.01);
-          projectsParent.rotateY(0.005);
+          githubObj.rotateY(0.03);
+          linkedinObj.rotateY(0.02);
+          projectsObj.rotateY(0.01);
+          githubParent.rotateY(0.01);
+          linkedinParent.rotateY(0.005);
+          projectsParent.rotateY(0.0025);
         }
         if (selectedIcon.visible) {
           selectedIcon.rotateY(0.25);
@@ -302,6 +305,7 @@
       }
 
       function selectObject(event) {
+        event.preventDefault();
         var raycaster = new THREE.Raycaster();
         var vector = new THREE.Vector3();
         vector.set((event.layerX / window.innerWidth) * 2 - 1, -(event.layerY / window.innerHeight) * 2 + 1, 0);
@@ -345,7 +349,8 @@
         document.getElementById("back").style.visibility = "visible";
       }
 
-      function goBack() {
+      function goBack(event) {
+        event.preventDefault();
         document.getElementById("back").style.visibility = "hidden";
         document.getElementById("info").innerHTML = "To get started, click on an icon to visit its page.";
         githubRing.material.color.setHex(0xffffff);
