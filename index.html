@@ -108,13 +108,12 @@
         document.body.appendChild(labelRenderer.domElement);
 
         //back button
-        document.getElementById("back").addEventListener("pointerdown", goBack);
+        document.getElementById("back").addEventListener("pointerup", goBack);
         document.getElementById("back").style.visibility = "hidden";
 
         //gets object of whatever was clicked
-        window.addEventListener("pointerdown", selectObject, false);
+        window.addEventListener("pointerup", selectObject, false);
         controls = new THREE.OrbitControls(camera, labelRenderer.domElement);
-        //controls.enablePan = false;
       }
 
       function loadScene() {
@@ -304,10 +303,10 @@
       function selectObject() {
         var raycaster = new THREE.Raycaster();
         var vector = new THREE.Vector3();
+        if (event.target.className == "linkButton"){
+          window.open(event.target.href, "_top");
+        }
         vector.set((event.layerX / window.innerWidth) * 2 - 1, -(event.layerY / window.innerHeight) * 2 + 1, 0);
-        console.log(event.layerX);
-        console.log(event.layerY);
-        console.log(event);
         raycaster.setFromCamera(vector, camera);
 
         var intersects = raycaster.intersectObjects(objArray, true);
