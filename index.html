@@ -304,8 +304,7 @@
         render();
       }
 
-      function selectObject(event) {
-        event.preventDefault();
+      function selectObject() {
         var raycaster = new THREE.Raycaster();
         var vector = new THREE.Vector3();
         vector.set((event.layerX / window.innerWidth) * 2 - 1, -(event.layerY / window.innerHeight) * 2 + 1, 0);
@@ -349,8 +348,7 @@
         document.getElementById("back").style.visibility = "visible";
       }
 
-      function goBack(event) {
-        event.preventDefault();
+      function goBack() {
         document.getElementById("back").style.visibility = "hidden";
         document.getElementById("info").innerHTML = "To get started, click on an icon to visit its page.";
         githubRing.material.color.setHex(0xffffff);
