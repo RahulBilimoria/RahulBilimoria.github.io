@@ -108,14 +108,11 @@
         document.body.appendChild(labelRenderer.domElement);
 
         //back button
-        document.getElementById("back").addEventListener("touchstart", goBack);
-        document.getElementById("back").addEventListener("click", goBack);
+        document.getElementById("back").addEventListener("pointerdown", goBack);
         document.getElementById("back").style.visibility = "hidden";
 
         //gets object of whatever was clicked
-        window.addEventListener("touchstart", selectObject, false);
-        window.addEventListener("click", selectObject, false);
-        //window.addEventListener("mouseup", selectObject, false);
+        window.addEventListener("pointerdown", selectObject, false);
         controls = new THREE.OrbitControls(camera, labelRenderer.domElement);
         //controls.enablePan = false;
       }
@@ -308,6 +305,9 @@
         var raycaster = new THREE.Raycaster();
         var vector = new THREE.Vector3();
         vector.set((event.layerX / window.innerWidth) * 2 - 1, -(event.layerY / window.innerHeight) * 2 + 1, 0);
+        console.log(event.layerX);
+        console.log(event.layerY);
+        console.log(event);
         raycaster.setFromCamera(vector, camera);
 
         var intersects = raycaster.intersectObjects(objArray, true);
