@@ -1,373 +1,177 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Rahul Bilimoria</title>
-    <style>
-      body {
-        text-align: center;
-        margin: 0px;
-        overflow: hidden;
-      }
-      canvas {
-        width: 100%;
-        height: 100%;
-      }
-      #info {
-        position: absolute;
-        top: 5px;
-        width: 100%;
-        z-index: 100;
-        color: white;
-      }
-      #back {
-        position: fixed;
-        width: 10%;
-        top: 1%;
-        left: 1%;
-        z-index: 100;
-        color: white;
-        background: rgba(255, 255, 255, 0.2);
-      }
-      #back:hover {
-        cursor: pointer;
-      }
-      .linkButton {
-        padding: 8px;
-        color: #ffffff;
-        text-decoration: none;
-        background-color: #555;
-        opacity: 0.7;
-      }
-      .linkButton:hover {
-        cursor: pointer;
-        opacity: 1;
-      }
-      .label {
-        color: #fff;
-        font-family: sans-serif;
-        padding-top: 8px;
-        padding-bottom: 8px;
-      }
-    </style>
-  </head>
-  <body>
-    <div id="info">
-      To get started, click on an icon to visit its page.
-    </div>
-    <div id="back">
-      Back
-    </div>
-    <script src="js/three.js"></script>
-    <script src="js/OrbitControls.js"></script>
-    <script src="js/OBJLoader.js"></script>
-    <script src="js/MTLLoader.js"></script>
-    <script src="js/CSS2DRenderer.js"></script>
-    <script src="js/tween.min.js"></script>
-    <script>
-      var scene;
-      var camera;
-      var renderer;
-      var labelRenderer;
-      var controls;
+<!DOCTYPE HTML>
+<!--
+	Hyperspace by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Rahul Bilimoria Portfolio</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
 
-      var selectedObject;
-      var selectedIcon;
-      var visitPageObj;
+		<!-- Sidebar -->
+			<section id="sidebar">
+				<div class="inner">
+					<nav>
+						<ul>
+							<li><a href="#intro">Welcome</a></li>
+							<li><a href="#one">About Me</a></li>
+							<li><a href="#two">Projects</a></li>
+							<li><a href="#three">Resumes</a></li>
+							<li><a href="#four">Contact Me</a></li>
+						</ul>
+					</nav>
+				</div>
+			</section>
 
-      var ringObj;
+		<!-- Wrapper -->
+			<div id="wrapper">
 
-      var githubObj;
-      var githubParent;
-      var githubRing;
+				<!-- Intro -->
+					<section id="intro" class="wrapper style1 fullscreen fade-up">
+						<div class="inner">
+							<h1>Rahul Bilimoria</h1>
+							<p>Software Developer</a></p>
+						</div>
+					</section>
 
-      var linkedinObj;
-      var linkedinParent;
-      var linkedinRing;
+				<!-- One -->
+					<section id="one" class="wrapper style2 spotlights">
+						<section>
+							<a href="#" class="image"><img src="../img/me.jpg" alt="" data-position="center center" /></a>
+							<div class="content">
+								<div class="inner">
+									<h2>About Me</h2>
+									<p>Hey there! I'm Rahul, a software developer based out of Brampton, Ontario. I started programming in high school through introductory classes and programming competitions. From then, I went to Toronto Metropolitan University (formerly known as Ryerson University) and graduated with a Bachelors of Computer Science.  Having built a strong foundation in the basics of development since graduating, I have developed a few projects in Java and C# while broadening my knowledge of more advanced topics.</p>
+								</div>
+							</div>
+						</section>
+					</section>
 
-      var projectsObj;
-      var projectsParent;
-      var projectsRing;
+				<!-- Two -->
+					<section id="two" class="wrapper style3 fade-up">
+						<div class="inner">
+							<h2>Projects</h2>
+							<p>A variety of projects between Virtual Reality and Game Development programmed in Java, C#, and WebGL</p>
+							<div class="features">
+								<section>
+									<span class="icon solid major fa-code"></span>
+									<h3><a href="https://github.com/RahulBilimoria/Bounce">Bounce</a></h3>
+									<p>A 2D keep-em-up game in which you must keep the weapons on your screen for as long as possible. Your goal is to try and survive as long as possible while obtaining the most points. Use these points to get upgrades and reach even larger high scores.</p>
+									<ul class="actions">
+										<li><a href="https://play.google.com/store/apps/details?id=com.RahulBilimoria.Bounce&pli=1" class="button">Google Play Store</a></li>
+										<li><a href="bounce.html" class="button">Play</a></li>
+									</ul>
+								</section>
+								<section>
+									<span class="icon solid major fa-lock"></span>
+									<h3><a href="https://github.com/RahulBilimoria/FlappyJump">Flappy Jump</a></h3>
+									<p>A 2D platforming game in which the platforms are constantly moving below you. Your goal is to try and survive as long as possible and use the currency you collect to upgrade your player and improve on your high score.</p>
+									<ul class="actions">
+										<li><a href="flappyjump.html" class="button">Play</a></li>
+									</ul>
+								</section>
+								<section>
+									<span class="icon solid major fa-cog"></span>
+									<h3><a href="https://github.com/RahulBilimoria/PokeGame">Pokemon RPG</a></h3>
+									<p>A classic take on the original Pokemon games. Catch pokemon and train your team to become the champion.</p>
+								</section>
+								<section>
+									<span class="icon solid major fa-desktop"></span>
+									<h3><a href="https://github.com/RahulBilimoria/EscapeRoom">Escape Room</a></h3>
+									<p>Experience an escape room in virtual reality. Solve unique puzzles and obtain the keys to unlock the front door to escape the living room.</p>
+								</section>
+								<section>
+									<span class="icon solid major fa-link"></span>
+									<h3><a href="https://github.com/RahulBilimoria/TavernVR">Tavern VR</a></h3>
+									<p>A lab which experiments with the interaction of various items and implements teleportation as a means of navigation in virtual reality. Items can be picked up, manipulated with some having secondary uses.</p>
+								</section>
+								<section>
+									<span class="icon major fa-gem"></span>
+									<h3><a href="https://github.com/RahulBilimoria/CPS511-Assignment-1">Submarine Battle</a></h3>
+									<p>A c++ game built to test the libraries and features of the OpenGL Library. The user controls a submarine and can fight with AI controlled enemies. Built using OpenGL primitives with basic input handling.</p>
+								</section>
+							</div>
+						</div>
+					</section>
 
-      var objArray = [];
+				<!-- Three -->
+				<section id="three" class="wrapper style2 spotlights">
+					<section>
+						<a href="#" class="image"><img src="images/pic01.jpg" alt="" data-position="center center" /></a>
+						<div class="content">
+							<div class="inner">
+								<h2>Game Developer Resume</h2>
+								<p>Aspiring Game Developer with Unity knowledge and experience</p>
+								<ul class="actions">
+									<li><a href="GameDeveloper.pdf" class="button">Open</a></li>
+								</ul>
+							</div>
+						</div>
+					</section>
+					<section>
+						<a href="#" class="image"><img src="images/pic02.jpg" alt="" data-position="top center" /></a>
+						<div class="content">
+							<div class="inner">
+								<h2>Software Developer Resume</h2>
+								<p>Experience with Java & C# with a strong background in problem solving and creative thinking</p>
+								<ul class="actions">
+									<li><a href="SoftwareDeveloper.pdf" class="button">Open</a></li>
+								</ul>
+							</div>
+						</div>
+					</section>
+				</section>
 
-      init();
-      loadScene();
+				<!-- Four -->
+					<section id="four" class="wrapper style1 fade-up">
+						<div class="inner">
+							<h2>Get In Touch</h2>
+							<p>I am currently looking for work and can be reached via my email at any time.</p>
+							<div class="split style1">
+								<section>
+									<ul class="contact">
+										<li>
+											<h3>Email</h3>
+											<p>rahulbilimoria1@gmail.com</p>
+										</li>
+										<li>
+											<h3>Social</h3>
+											<ul class="icons">
+												<li><a href="https://github.com/RahulBilimoria" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+												<li><a href="https://www.linkedin.com/in/rahul-bilimoria" class="icon brands fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+											</ul>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+					</section>
 
-      function init() {
-        scene = new THREE.Scene();
-        camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 10000);
-        renderer = new THREE.WebGLRenderer({ antialias: true });
+			</div>
 
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        document.body.appendChild(renderer.domElement);
+		<!-- Footer -->
+			<footer id="footer" class="wrapper style1-alt">
+				<div class="inner">
+					<ul class="menu">
+						<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+				</div>
+			</footer>
 
-        labelRenderer = new THREE.CSS2DRenderer();
-        labelRenderer.setSize(window.innerWidth, window.innerHeight);
-        labelRenderer.domElement.style.position = "absolute";
-        labelRenderer.domElement.style.top = 0;
-        document.body.appendChild(labelRenderer.domElement);
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
 
-        //back button
-        document.getElementById("back").addEventListener("pointerup", goBack);
-        document.getElementById("back").style.visibility = "hidden";
-
-        //gets object of whatever was clicked
-        window.addEventListener("pointerup", selectObject, false);
-        controls = new THREE.OrbitControls(camera, labelRenderer.domElement);
-      }
-
-      function loadScene() {
-        var manager = new THREE.LoadingManager();
-        var mtlLoader = new THREE.MTLLoader();
-        var maxAnisotropy = renderer.capabilities.getMaxAnisotropy();
-
-        var geometry = new THREE.CylinderGeometry(0.001, 0.125 * 3, 0.25 * 3, 4);
-        var material = new THREE.MeshBasicMaterial({ color: 0xff0000 });
-        selectedIcon = new THREE.Mesh(geometry, material);
-        selectedIcon.position.set(0, 5, 0);
-        selectedIcon.rotation.x = THREE.Math.degToRad(180);
-        selectedIcon.visible = false;
-        this.scene.add(selectedIcon);
-
-        manager.onStart = function(url, itemsLoaded, itemsTotal) {
-          console.log("Started loading: " + url + ".");
-        };
-
-        manager.onLoad = function() {
-          console.log("Finished loading models");
-        };
-
-        manager.onProgress = function(url, itemsLoaded, itemsTotal) {
-          console.log("Loading: " + url + ".");
-        };
-
-        mtlLoader.load("models/name.mtl", function(mats) {
-          mats.preload();
-          var objLoader = new THREE.OBJLoader(manager);
-          objLoader.setMaterials(mats);
-          mats.materials.Ring.map.anisotropy = maxAnisotropy;
-          objLoader.load("models/name.obj", function(object) {
-            ringObj = object;
-            ringObj.position.set(0, 0, 0);
-
-            visitPageObj = document.createElement("div");
-            visitPageObj.className = "label";
-            var a = document.createElement("a");
-            a.appendChild(document.createTextNode("Visit Page"));
-            a.className = "linkButton";
-            a.title = "Rahul Bilimoria";
-            a.href = "https://github.com/RahulBilimoria";
-            visitPageObj.appendChild(a);
-            visitPageObj.style.marginTop = "-1em";
-            visitPageObj.style.visibility = "hidden";
-            var linkLabel = new THREE.CSS2DObject(visitPageObj);
-            linkLabel.position.set(0, 1.2, 0);
-
-            ringObj.add(linkLabel);
-            scene.add(object);
-          });
-        });
-
-        mtlLoader.load("models/github.mtl", function(mats) {
-          mats.preload();
-          githubRing = createRing(5);
-          githubParent = new THREE.Object3D();
-
-          var objLoader = new THREE.OBJLoader(manager);
-          objLoader.setMaterials(mats);
-          objLoader.load("models/github.obj", function(object) {
-            githubObj = object;
-            githubObj.position.set(5, 0, 0);
-            objArray.push(githubObj);
-            githubParent.add(githubObj);
-
-            scene.add(githubRing); //could use githubring as the parent instead of empty object class
-            scene.add(githubParent);
-          });
-        });
-
-        mtlLoader.load("models/linkedin.mtl", function(mats) {
-          mats.preload();
-          linkedinRing = createRing(15);
-          linkedinParent = new THREE.Object3D();
-
-          var objLoader = new THREE.OBJLoader(manager);
-          objLoader.setMaterials(mats);
-          objLoader.load("models/linkedin.obj", function(object) {
-            linkedinObj = object;
-            linkedinObj.position.set(15, 0, 0);
-            objArray.push(linkedinObj);
-            linkedinParent.add(linkedinObj);
-
-            scene.add(linkedinRing);
-            scene.add(linkedinParent);
-          });
-        });
-
-        mtlLoader.load("models/projects.mtl", function(mats) {
-          mats.preload();
-          projectsRing = createRing(25);
-          projectsParent = new THREE.Object3D();
-
-          var objLoader = new THREE.OBJLoader(manager);
-          objLoader.setMaterials(mats);
-          objLoader.load("models/projects.obj", function(object) {
-            projectsObj = object;
-            projectsObj.position.set(25, 0, 0);
-            objArray.push(projectsObj);
-            projectsParent.add(projectsObj);
-
-            scene.add(projectsRing);
-            scene.add(projectsParent);
-          });
-        });
-
-        //Build for the skybox
-        var skyboxGeo = new THREE.CubeGeometry(10000, 10000, 10000);
-        var skyboxMats = [
-          new THREE.MeshBasicMaterial({
-            map: new THREE.TextureLoader().load("img/skybox/front.png"),
-            side: THREE.DoubleSide
-          }),
-          new THREE.MeshBasicMaterial({
-            map: new THREE.TextureLoader().load("img/skybox/back.png"),
-            side: THREE.DoubleSide
-          }),
-          new THREE.MeshBasicMaterial({
-            map: new THREE.TextureLoader().load("img/skybox/up.png"),
-            side: THREE.DoubleSide
-          }),
-          new THREE.MeshBasicMaterial({
-            map: new THREE.TextureLoader().load("img/skybox/down.png"),
-            side: THREE.DoubleSide
-          }),
-          new THREE.MeshBasicMaterial({
-            map: new THREE.TextureLoader().load("img/skybox/right.png"),
-            side: THREE.DoubleSide
-          }),
-          new THREE.MeshBasicMaterial({
-            map: new THREE.TextureLoader().load("img/skybox/left.png"),
-            side: THREE.DoubleSide
-          })
-        ];
-
-        var skybox = new THREE.Mesh(skyboxGeo, skyboxMats);
-        scene.add(skybox);
-
-        //Build for the sun
-        var sunGeometry = new THREE.SphereGeometry(0.8, 32, 32);
-        var material = new THREE.MeshPhongMaterial({
-          color: 0xffff00,
-          wireframe: false
-        });
-
-        //Center of the app
-        var sun = new THREE.Mesh(sunGeometry, material);
-        scene.add(sun);
-
-        var light = new THREE.AmbientLight(0xffffff, 1.75);
-        scene.add(light);
-
-        camera.position.z = 20;
-        camera.position.y = 5;
-        camera.lookAt(new THREE.Vector3(0, 0, 0));
-      }
-
-      function update() {
-        //use loading manager
-        if (ringObj != undefined && githubObj != undefined && linkedinObj != undefined && projectsObj != undefined) {
-          ringObj.rotateY(0.0174533);
-          githubObj.rotateY(0.03);
-          linkedinObj.rotateY(0.02);
-          projectsObj.rotateY(0.01);
-          githubParent.rotateY(0.01);
-          linkedinParent.rotateY(0.005);
-          projectsParent.rotateY(0.0025);
-        }
-        if (selectedIcon.visible) {
-          selectedIcon.rotateY(0.25);
-        }
-      }
-
-      function render() {
-        renderer.render(scene, camera);
-        labelRenderer.render(scene, camera);
-      }
-
-      function loop() {
-        requestAnimationFrame(loop);
-        update();
-        render();
-      }
-
-      function selectObject() {
-        var raycaster = new THREE.Raycaster();
-        var vector = new THREE.Vector3();
-        if (event.target.className == "linkButton"){
-          window.open(event.target.href, "_top");
-        }
-        vector.set((event.layerX / window.innerWidth) * 2 - 1, -(event.layerY / window.innerHeight) * 2 + 1, 0);
-        raycaster.setFromCamera(vector, camera);
-
-        var intersects = raycaster.intersectObjects(objArray, true);
-        if (intersects.length > 0) {
-          selectedObject = intersects[0].object.parent;
-
-          var bbox = new THREE.Box3();
-          bbox.setFromObject(selectedObject);
-          selectedIcon.position.set(selectedObject.position.x, selectedObject.position.y + (bbox.max.y - bbox.min.y) / 2 + 1, selectedObject.position.z);
-          selectedObject.parent.add(selectedIcon);
-          selectedIcon.visible = true;
-
-          showSelectedUI(selectedObject);
-        }
-      }
-
-      function showSelectedUI(obj) {
-        githubRing.material.color.setHex(0xffffff);
-        linkedinRing.material.color.setHex(0xffffff);
-        projectsRing.material.color.setHex(0xffffff);
-        switch (obj) {
-          case githubObj:
-            visitPageObj.firstChild.href = "https://github.com/RahulBilimoria";
-            document.getElementById("info").innerHTML = "Github Portfolio";
-            githubRing.material.color.setHex(0xffff00);
-            break;
-          case linkedinObj:
-            visitPageObj.firstChild.href = "https://www.linkedin.com/in/rahul-bilimoria/";
-            document.getElementById("info").innerHTML = "LinkedIn Profile";
-            linkedinRing.material.color.setHex(0xffff00);
-            break;
-          case projectsObj:
-            visitPageObj.firstChild.href = "https://www.rahulbilimoria.me/projects";
-            document.getElementById("info").innerHTML = "Projects Page";
-            projectsRing.material.color.setHex(0xffff00);
-        }
-        visitPageObj.style.visibility = "visible";
-        document.getElementById("back").style.visibility = "visible";
-      }
-
-      function goBack() {
-        document.getElementById("back").style.visibility = "hidden";
-        document.getElementById("info").innerHTML = "To get started, click on an icon to visit its page.";
-        githubRing.material.color.setHex(0xffffff);
-        linkedinRing.material.color.setHex(0xffffff);
-        projectsRing.material.color.setHex(0xffffff);
-        visitPageObj.style.visibility = "hidden";
-        selectedObject = null;
-        selectedIcon.visible = false;
-      }
-
-      function createRing(radius) {
-        var geo = new THREE.CircleGeometry(radius, 64);
-        geo.vertices.shift();
-        var mat = new THREE.LineBasicMaterial({ color: 0xffffff, opacity: 0.25, transparent: true });
-        var ring = new THREE.LineLoop(geo, mat);
-        ring.rotation.x = THREE.Math.degToRad(90);
-        return ring;
-      }
-
-      loop();
-    </script>
-  </body>
+	</body>
 </html>

@@ -1,0 +1,25 @@
+{
+  "name": "portfolio-website",
+  "version": "1.0.0",
+  "description": "Website containing all of my work",
+  "main": "controller.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "babel": "babel --presets es2015 src/index.js -o build/index-bundle.js",
+    "start": "webpack-dev-server --open --mode development",
+    "webpack": "webpack --mode production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RahulBilimoria/RahulBilimoria.github.io.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RahulBilimoria/RahulBilimoria.github.io/issues"
+  },
+  "homepage": "https://github.com/RahulBilimoria/RahulBilimoria.github.io#readme",
+  "keywords": [],
+  "dependencies": {},
+  "devDependencies": {}
+}
